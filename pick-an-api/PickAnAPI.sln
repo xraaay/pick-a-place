@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Help", "Help\Help.csproj", "{1894B051-4CF8-4A38-A3AF-4D5C0E9CF22F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickAnAPI", "Help\PickAnAPI.csproj", "{1894B051-4CF8-4A38-A3AF-4D5C0E9CF22F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
