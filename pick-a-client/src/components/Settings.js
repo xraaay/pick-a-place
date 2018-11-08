@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Settings extends React.Component {
     constructor(props){
@@ -9,7 +10,18 @@ class Settings extends React.Component {
     }
 
     componentDidMount(){
-        
+        this.getAllSettings()
+    }
+
+    getAllSettings(){
+        let url = "/api/settings"
+        const config = {
+            method: 'GET'
+        }
+        let response = axios(url, config)
+            .then(console.log)
+            .catch(console.log)
+        return response
     }
 
     render() {

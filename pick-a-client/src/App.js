@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import ContentRouter from './components/ContentRouter'
-import Header from './components/Header';
+// import Header from './components/Header';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
 				<img src="https://melbournechapter.net/images/compass-clipart-1.png" className="App-logo" alt="logo" />
 			</header>
 			</div> */}
-			<Header />
+			{/* <Header /> */}
 			<ContentRouter />
 		</React.Fragment>
     );

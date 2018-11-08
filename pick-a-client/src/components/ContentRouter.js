@@ -1,32 +1,16 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React from 'react'
+import Settings from './Settings'
 
 class ContentRouter extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-
-        }
-    }
-
     render(){
         return (
             <BrowserRouter>
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/other">Other</Link>
-                            </li>
-                            <li>
-                                <Link to="/stuff">Stuff</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                <Switch>
+                    {/* <Route path="/">Home</Route> */}
+                    {/* <Route path="/other">Other</Route> */}
+                    <Route path="/" component={Settings}>Stuff</Route>
+                </Switch>
             </BrowserRouter>
         )   
     }
