@@ -10,6 +10,7 @@ class ContentRouter extends React.Component {
                     {/* <Route path="/">Home</Route> */}
                     {/* <Route path="/other">Other</Route> */}
                     <Route path="/" component={Settings}>Stuff</Route>
+                    <Route path="/register" component={Register}>Register</Route>
                 </Switch>
             </BrowserRouter>
         )   

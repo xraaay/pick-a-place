@@ -13,13 +13,13 @@ namespace PickAnAPI.Controllers
     public class SettingsController : ApiController
     {
         SettingsService _settingsService;
-        public SettingsController(SettingsService settingsService)
+        public SettingsController()
         {
-            _settingsService = settingsService;
+            _settingsService = new SettingsService();
         }
 
-        [HttpGet, Route]
-        public HttpResponseMessage GetSettings(string name)
+        [HttpGet]
+        public HttpResponseMessage GetSettings()
         {
             List<Settings> settings = _settingsService.GetSettings();
             return Request.CreateResponse(HttpStatusCode.OK, settings);

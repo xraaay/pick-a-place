@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import ContentRouter from './components/ContentRouter'
+import Nav from './layout/Nav';
+import Header from './layout/Header'
 // import Header from './components/Header';
 
 class App extends Component {
@@ -14,6 +16,8 @@ class App extends Component {
 			</header>
 			</div> */}
 			{/* <Header /> */}
+			<Nav />
+			<Header />
 			<ContentRouter />
 		</React.Fragment>
     );
