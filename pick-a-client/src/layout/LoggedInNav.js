@@ -1,25 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
 
-class Nav extends React.Component {
+class LoggedInNav extends React.Component {
     constructor(props){
         super(props)
-        this.toSignup = this.toSignup.bind(this)
-        this.toLogin = this.toLogin.bind(this)
-        this.toHome= this.toHome.bind(this)
+
     }
-    toHome(e){
-        e.preventDefault()
-        this.props.history.push("/")
-    }
-    toSignup(e){
-        e.preventDefault()
-        this.props.history.push("/register")
-    }
-    toLogin(e){
-        e.preventDefault()
-        this.props.history.push("/login")
-    }
+    
     render(){
         let route = this.props.location.pathname
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
@@ -51,4 +37,4 @@ class Nav extends React.Component {
     }
 }
 
-export default withRouter(Nav)
+export default LoggedInNav

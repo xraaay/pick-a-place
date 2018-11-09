@@ -10,7 +10,7 @@ namespace PickAnAPI.Services
 {
     public class SettingsService
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+        readonly string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
 
         public List<Settings> GetSettings()
         {

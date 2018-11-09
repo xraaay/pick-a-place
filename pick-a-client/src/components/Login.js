@@ -1,7 +1,10 @@
 import React from 'react';
 import * as userService from '../services/userService'
-import "./Register.css"
-class Register extends React.Component {
+import { connect } from 'react-redux'
+import { withCookies } from 'react-cookie'
+import { setUser } from '../actions/index'
+
+class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -10,7 +13,7 @@ class Register extends React.Component {
             password: ''
         }
         this.inputChange = this.inputChange.bind(this);
-        this.register = this.register.bind(this)
+        this.login = this.login.bind(this)
     }
 
     inputChange(e){
@@ -19,14 +22,18 @@ class Register extends React.Component {
         })
     }
 
-    register(){
+    login(){
         const data = {
             username: this.state.username,
-            email: this.state.email,
             password: this.state.password
         }
-        userService.register(data)
-            .then(console.log)
+        userService.login(data)
+            .then(() => {
+                let user = this.props.cookies.get('myCookie')
+                if(user){
+                    this.props.setUser(user)
+                }
+            })
             .catch(console.log)
     }
 
@@ -35,15 +42,11 @@ class Register extends React.Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    <h2>Register</h2>
+                    <h2>Login</h2>
                     <form className="col-sm-12 remove-padding">
                         <div className="col-sm-6 remove-padding">
                             <label>Username</label>
                             <input type="text" name="username" value={this.state.username} onChange={this.inputChange} className="form-control" />
-                        </div>
-                        <div className="col-sm-6 remove-padding">
-                            <label>Email</label>
-                            <input type="text" name="email" value={this.state.email} onChange={this.inputChange} className="form-control" />
                         </div>
                         <div className="col-sm-6 remove-padding">
                             <label>Password</label>
@@ -51,11 +54,14 @@ class Register extends React.Component {
                         </div>
                     </form>
                     <br></br>
-                    <button type="button" class="btn btn-primary mx-auto" onClick={this.register}>Register</button>
+                    <button type="button" className="btn btn-primary mx-auto" onClick={this.login}>login</button>
                 </div>
             </React.Fragment>
         )
     }
 }
+const mapDispatchToProps = dispatch => ({
+    setUser: user => dispatch(setUser(user))
+})
 
-export default Register
+export default withCookies(connect(null, mapDispatchToProps)(Login))
