@@ -4,22 +4,24 @@ import './App.css';
 import ContentRouter from './components/ContentRouter'
 import Nav from './layout/Nav';
 import Header from './layout/Header'
+import Homepage from './layout/Footer'
 // import Header from './components/Header';
 
 class App extends Component {
   render() {
     return (
-		<React.Fragment>
-			{/* <div className="App">
-			<header className="App-header">
-				<img src="https://melbournechapter.net/images/compass-clipart-1.png" className="App-logo" alt="logo" />
-			</header>
-			</div> */}
-			{/* <Header /> */}
-			<Nav />
-			<Header />
-			<ContentRouter />
-		</React.Fragment>
+			<React.Fragment>
+				{/* <div className="App">
+				<header className="App-header">
+					<img src="https://melbournechapter.net/images/compass-clipart-1.png" className="App-logo" alt="logo" />
+				</header>
+				</div> */}
+				{/* <Header /> */}
+				<Nav />
+				{/* <Header />
+				<Homepage /> */}
+				<ContentRouter />
+			</React.Fragment>
     );
   }
 }
