@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import ContentRouter from './components/ContentRouter'
+import ContentRouter from './layout/ContentRouter'
 import Nav from './layout/Nav';
-import Header from './layout/Header'
-import Homepage from './layout/Footer'
-// import Header from './components/Header';
+import { BrowserRouter } from 'react-router-dom'
+import Layout from './layout/Layout';
 
 class App extends Component {
   render() {
     return (
-			<React.Fragment>
+			<BrowserRouter>
 				{/* <div className="App">
 				<header className="App-header">
 					<img src="https://melbournechapter.net/images/compass-clipart-1.png" className="App-logo" alt="logo" />
 				</header>
 				</div> */}
-				{/* <Header /> */}
-				<Nav />
-				{/* <Header />
-				<Homepage /> */}
-				<ContentRouter />
-			</React.Fragment>
+				<Layout />
+			</BrowserRouter>
     );
   }
 }
