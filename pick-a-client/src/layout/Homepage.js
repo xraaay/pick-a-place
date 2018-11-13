@@ -1,23 +1,19 @@
 import React from 'react';
-import * as yelpService from '../services/yelpService'
 
 class Homepage extends React.Component {
     constructor(props){
         super(props)
-        this.rtd = this.rtd.bind(this)
+        this.getGeoLocation = this.getGeoLocation.bind(this)
     }
-    rtd(){
-        const query = {
-            location: "777 Alameda St, Los Angeles",
-            term: "food",
-            radius: 5,
-            limit: 3,
-            open_now: false
+
+    getGeoLocation(){
+        if (navigator.geolocation) {
+            this.props.history.push("/rtd")
+        } else {
+            alert("GeoLocation not available")
         }
-        yelpService.search(query)
-            .then(console.log)
-            .catch(console.log)
     }
+
     render(){
         return (
             <React.Fragment>
@@ -45,7 +41,7 @@ class Homepage extends React.Component {
                 <br /><br /><br /><br /><br /><br />
                 <div className="featured-text text-center">
                     <p className="text-black-50 mb-0 ">Allow us to decide for you.</p>
-                    <button type="button" className="btn btn-primary mx-auto" onClick={this.rtd}>Roll the Dice</button>
+                    <button type="button" className="btn btn-secondary mx-auto" onClick={this.getGeoLocation}>Roll the Dice</button>
                 </div>
                 <br /><br /><br /><br /><br /><br />
             </React.Fragment>

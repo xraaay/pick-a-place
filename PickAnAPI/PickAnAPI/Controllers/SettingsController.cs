@@ -1,4 +1,5 @@
 ﻿using PickAnAPI.Models;
+using PickAnAPI.Models.Requests;
 using PickAnAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,13 @@ namespace PickAnAPI.Controllers
         {
             List<Settings> settings = _settingsService.GetSettings();
             return Request.CreateResponse(HttpStatusCode.OK, settings);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Post(SettingsCreate req)
+        {
+            int id = _settingsService.Create(req);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

@@ -14,17 +14,15 @@ namespace PickAnAPI.Services
     {
         readonly string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
 
-        public async Task<object> GetBusinesses(QueryString url)
+        public async Task<HttpResponseMessage> GetBusinesses(QueryString url)
         {
             string yelpURI = "https://api.yelp.com/v3/businesses/search?";
             string fullURI = yelpURI + url.String;
             string apiKey = ConfigurationManager.AppSettings["yelpAPI"];
-
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(yelpURI);
+            //client.BaseAddress = new Uri(yelpURI);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
             HttpResponseMessage response = await client.GetAsync(fullURI);
-
             return response;
         }
     }

@@ -1,48 +1,69 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 class Nav extends React.Component {
     constructor(props){
         super(props)
-        this.toSignup = this.toSignup.bind(this)
-        this.toLogin = this.toLogin.bind(this)
-        this.toHome= this.toHome.bind(this)
+        this.navigate = this.navigate.bind(this)
     }
-    toHome(e){
+
+    navigate(e, target){
         e.preventDefault()
-        this.props.history.push("/")
-    }
-    toSignup(e){
-        e.preventDefault()
-        this.props.history.push("/register")
-    }
-    toLogin(e){
-        e.preventDefault()
-        this.props.history.push("/login")
+        switch(target){
+            case 0:
+                this.props.history.push("/")
+                break;
+            case 1:
+                this.props.history.push("/login")
+                break;
+            case 2:
+                this.props.history.push("/register")
+                break;
+            case 3:
+                this.props.history.push("/search")
+                break;
+            case 4:
+                this.props.history.push("/settings")
+        } 
     }
     render(){
         let route = this.props.location.pathname
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
         const title = route === "/" ? null : {color: '#161616'}
         const buttons = route === "/" ? null : {color: 'rgba(0, 0, 0, 0.5)'}
+        const loggedIn = this.props.user ? 
+        (
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
+                </li>
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 2)}} style={buttons}>Sign Up</a>
+                </li>
+            </ul>
+        )
+        : 
+        (
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
+                </li>
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>Settings</a>
+                </li>
+            </ul>
+        )
         return (
             <React.Fragment>
                     <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav" style={navbar}>
                         <div className="container">
-                            <a className="navbar-brand js-scroll-trigger"style={title} onClick={this.toHome}>Pick a Place</a>
+                            <a href="" className="navbar-brand js-scroll-trigger"style={title} onClick={e => {this.navigate(e, 0)}}>Pick a Place</a>
                             {/* <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i className="fas fa-bars"></i>
                             </button> */}
                             <div className="collapse navbar-collapse" id="navbarResponsive">
-                                <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" onClick={this.toLogin} style={buttons}>Log In</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" onClick={this.toSignup} style={buttons}>Sign Up</a>
-                                    </li>
-                                </ul>
+                                {loggedIn}
                             </div>
                         </div>
                     </nav>
@@ -51,4 +72,8 @@ class Nav extends React.Component {
     }
 }
 
-export default withRouter(Nav)
+const mapStateToProps = state => ({
+    user: state.user
+})
+
+export default withRouter(connect(mapStateToProps)(Nav))

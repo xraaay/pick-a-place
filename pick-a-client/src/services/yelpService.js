@@ -14,8 +14,6 @@ function search(queryString){
         data: data
     }
     return axios(url, config)
-        .then(console.log)
-        .catch(console.log)
 }
 
 export { search }

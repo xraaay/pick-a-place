@@ -4,17 +4,23 @@ import React from 'react'
 import Register from '../components/Register'
 import Homepage from './Homepage'
 import Login from "../components/Login";
+import ViewSettings from "../components/ViewSettings";
+import Search from '../components/SettingsForm';
+import RollTheDice from "../components/RollTheDice";
 
 class ContentRouter extends React.Component {
     render(){
         return (
             <React.Fragment>
                 <Switch>
-                    {/* <Route path="/">Home</Route> */}
-                    {/* <Route path="/other">Other</Route> */}
-                    <Route path="/" exact component={Homepage}>Stuff</Route>
-                    <Route path="/register" component={Register}>Register</Route>
-                    <Route path="/login" component={Login}>Login</Route>
+                    {/* <Route path="/">Home */}
+                    {/* <Route path="/other">Other */}
+                    <Route path="/" exact component={Homepage} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/settings" component={ViewSettings} />
+                    <Route path="/search" component={Search} />
+                    <Route path="/rtd" component={RollTheDice} />
                 </Switch>
             </React.Fragment>
         )   

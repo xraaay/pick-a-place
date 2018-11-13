@@ -189,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Requests\QueryString.cs" />
+    <Compile Include="Models\Requests\SettingsCreate.cs" />
     <Compile Include="Models\Requests\UserCreate.cs" />
     <Compile Include="Models\Requests\UserLogin.cs" />
     <Compile Include="Models\Responses\Business.cs" />

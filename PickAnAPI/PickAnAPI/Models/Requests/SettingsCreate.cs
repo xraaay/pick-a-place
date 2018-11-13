@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PickAnAPI.Models
+namespace PickAnAPI.Models.Requests
 {
-    public class Settings
+    public class SettingsCreate
     {
         public string Name { get; set; }
         public string Location { get; set; }

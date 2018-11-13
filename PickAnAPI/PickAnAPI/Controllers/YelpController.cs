@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace PickAnAPI.Controllers
@@ -20,10 +21,11 @@ namespace PickAnAPI.Controllers
         }
 
         [HttpPost, Route]
-        public HttpResponseMessage GetBusinesses(QueryString url)
+        public async Task<HttpResponseMessage> GetBusinesses(QueryString url)
         {
-            var response = _yelpService.GetBusinesses(url);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            return await _yelpService.GetBusinesses(url);
+            //return Request.CreateResponse(HttpStatusCode.OK, response);
+
         }
     }
 }
