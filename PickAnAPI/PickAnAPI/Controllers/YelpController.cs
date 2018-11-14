@@ -21,9 +21,10 @@ namespace PickAnAPI.Controllers
         }
 
         [HttpPost, Route]
-        public async Task<HttpResponseMessage> GetBusinesses(QueryString url)
+        public async Task<HttpResponseMessage> GetBusinesses(YelpRequest req)
         {
-            return await _yelpService.GetBusinesses(url);
+            object test = Request.Content;
+            return await _yelpService.GetBusinesses(req);
             //return Request.CreateResponse(HttpStatusCode.OK, response);
 
         }

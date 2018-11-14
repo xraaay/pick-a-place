@@ -22,8 +22,6 @@ class Homepage extends React.Component {
                         <div className="mx-auto text-center">
                             <h1 className="mx-auto my-0 text-uppercase" style={{pointerEvents:'none'}}>Pick a Place,</h1>
                             <h2 className="mx-auto my-0 text-uppercase" style={{pointerEvents:'none'}}>dammit</h2>
-                            {/* <h2 className="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-                            <a href="#about" className="btn btn-primary js-scroll-trigger">Get Started</a> */}
                         </div>
                     </div>
                 </header>

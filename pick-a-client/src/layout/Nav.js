@@ -24,6 +24,12 @@ class Nav extends React.Component {
                 break;
             case 4:
                 this.props.history.push("/settings")
+                break;
+            case 5:
+                this.props.history.push("/rtd")
+                break;
+            default:
+                console.log("error")
         } 
     }
     render(){
@@ -31,8 +37,7 @@ class Nav extends React.Component {
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
         const title = route === "/" ? null : {color: '#161616'}
         const buttons = route === "/" ? null : {color: 'rgba(0, 0, 0, 0.5)'}
-        const loggedIn = this.props.user ? 
-        (
+        const loggedIn = this.props.user ? (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
@@ -41,10 +46,14 @@ class Nav extends React.Component {
                     <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 2)}} style={buttons}>Sign Up</a>
                 </li>
             </ul>
-        )
-        : 
-        (
+        ) : (
             <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 6)}} style={buttons}>Would You Rather</a>
+                </li>
+                <li className="nav-item">
+                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={buttons}>Roll The Dice</a>
+                </li>
                 <li className="nav-item">
                     <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
                 </li>
