@@ -14,6 +14,45 @@ namespace PickAnAPI.Services
     {
         readonly string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
 
+        public YelpRequest GetSettingsById(int id)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = "Settings_Select_ById";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                YelpRequest setting = null;
+
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string price = (string)reader["Price"];
+                        if(price.Length > 2)
+                        {
+                            price = price.Substring(1, price.Length - 2);
+                        }
+                        
+                        setting = new YelpRequest()
+                        {
+                            Location = (string)reader["Location"],
+                            OpenNow = (bool)reader["OpenNow"],
+                            Radius = (int)reader["Radius"],
+                            Price = price,
+                            Limit = 50,
+                            Term = "Restaurant"
+                        };
+                    }
+                }
+                return setting;
+            }
+        }
+
         public List<Settings> GetSettings()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -33,6 +72,7 @@ namespace PickAnAPI.Services
                     {
                         Settings setting = new Settings()
                         {
+                            Id = (int)reader["Id"],
                             Name = (string)reader["Name"],
                             Location = (string)reader["Location"],
                             OpenNow = (bool)reader["OpenNow"],

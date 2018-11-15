@@ -21,4 +21,12 @@ function create(data){
         .catch(console.log)
 }
 
-export { getAll, create }
+function searchById(id){
+    let url = "/api/settings/search/" + id;
+    const config = {
+        method: 'GET'
+    }
+    return axios(url,config)
+}
+
+export { getAll, create, searchById }

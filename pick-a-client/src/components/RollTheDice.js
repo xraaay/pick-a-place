@@ -1,8 +1,10 @@
 import React from 'react';
 import * as yelpService from '../services/yelpService'
-import { CardDeck, Card, CardImg, CardImgOverlay, 
-        CardText, CardTitle, CardColumns, Badge } from 'reactstrap'
+import * as settingsService from '../services/settingsService'
 import Rating from 'react-rating'
+import { Card, CardImg, CardText, 
+    CardTitle, CardColumns, Badge } from 'reactstrap'
+import { shuffleResults } from '../services/resuseableFunctions'
 
 class RollTheDice extends React.Component {
     constructor(props){
@@ -14,7 +16,11 @@ class RollTheDice extends React.Component {
     }
 
     componentDidMount(){
-        this.getGeoLocation();
+        if(this.props.match.params.id){
+            this.rtd()
+        } else {
+            this.getGeoLocation();
+        }
     }
 
     getGeoLocation(){
@@ -25,27 +31,26 @@ class RollTheDice extends React.Component {
         }
     }
 
-    shuffleResults(arr){
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-    }
-
     rtd(position){
-        const query = {
-            longitude: position.coords.longitude,
-            latitude: position.coords.latitude,
-            term: "restaurant",
-            radius: 16000,
-            limit: 50,
-            open_now: true,
-            price: 1
+        let promise;
+        let query = {}
+        if(this.props.match.params.id){
+            promise = settingsService.searchById(this.props.match.params.id)
+        } else {
+            query = {
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude,
+                term: "restaurant",
+                radius: 16000,
+                limit: 50,
+                open_now: true,
+                price: 1
+            }
+            promise = yelpService.search(query)
         }
-        yelpService.search(query)
+        promise
             .then(response => {
-                let shuffle = this.shuffleResults(response.data.businesses)
+                let shuffle = shuffleResults(response.data.businesses)
                 let three = shuffle.slice(0,3)
                 this.setState({
                     results: three
@@ -88,6 +93,8 @@ class RollTheDice extends React.Component {
                                     </CardText>
                                     <CardText className="col-sm-12">
                                         <strong>Distance:</strong> { distance <= 1 ? + distance + " mile" : distance + " miles"} 
+                                        <br></br>
+                                        <strong>Price:</strong> {item.price}
                                         <br></br>
                                         <strong>Reviews:</strong> {item.review_count}
                                         <br></br>

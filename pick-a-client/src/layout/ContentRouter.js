@@ -20,7 +20,7 @@ class ContentRouter extends React.Component {
                     <Route path="/login" component={Login} />
                     <Route path="/settings" component={ViewSettings} />
                     <Route path="/search" component={Search} />
-                    <Route path="/rtd" component={RollTheDice} />
+                    <Route path="/rtd/:id?" component={RollTheDice} />
                 </Switch>
             </React.Fragment>
         )   

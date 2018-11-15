@@ -33,7 +33,9 @@ class SettingsForm extends React.Component {
             openNow: this.state.openNow
         }
         settingsService.create(data)
-            .then(console.log)
+            .then(response => {
+                this.props.history.push("/settings")
+            })
             .catch(console.log)
     }
 
@@ -77,7 +79,7 @@ class SettingsForm extends React.Component {
                     <div className="col-sm-6">
                         <FormGroup check>
                             <Label check>
-                                <Input type="checkbox" />{' '}
+                                <Input type="checkbox" name="openNow" onChange={this.inputChange} />
                                 Open Now
                             </Label>
                         </FormGroup>

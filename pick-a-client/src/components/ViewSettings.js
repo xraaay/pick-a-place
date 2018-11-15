@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, CardText,
-        Button, CardDeck,
-        Badge } from 'reactstrap';
+import { Card, CardText, Button, CardDeck, Badge } from 'reactstrap';
 
 class ViewSettings extends React.Component {
     constructor(props){
@@ -31,6 +29,10 @@ class ViewSettings extends React.Component {
         return response
     }
 
+    rollTheDice(id){
+        this.props.history.push("/rtd/" + id)
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -38,6 +40,8 @@ class ViewSettings extends React.Component {
                     <div className="col-sm-12">
                         <CardDeck>
                             {this.state.settings[0] ? this.state.settings.map(item => {
+                                let price = JSON.parse(item.Price).sort((a, b) => a-b);
+                                let dollarSign = price.map((item, index) => (index ? ', ': "") + "$".repeat(item))
                                 return (
                                         <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-sm-3">
                                             {/* <CardTitle>Location: {item.Location}</CardTitle>
@@ -45,15 +49,15 @@ class ViewSettings extends React.Component {
                                             <CardText>
                                                 <h4 style={{textAlign:'center'}}>{item.Name}</h4>
                                                 <p><strong>Location: </strong>{item.Location} <span className="glyphicon glyphicon-pencil"></span></p>
-                                                <p><strong>Status: </strong>
+                                                <p><strong>Open Now: </strong>
                                                     {item.OpenNow 
-                                                        ?<Badge color="success">Open Now</Badge>
-                                                        :<Badge color="danger">Closed</Badge>
+                                                        ?<Badge color="success">Yes</Badge>
+                                                        :<Badge color="danger">No</Badge>
                                                     }
                                                 </p>
-                                                <p><strong>Price: </strong>{JSON.parse(item.Price)}</p>
+                                                <p><strong>Price: </strong>{dollarSign}</p>
                                             </CardText>
-                                            <Button>Select</Button>
+                                            <Button onClick={e => {this.rollTheDice(item.Id)}}>Select</Button>
                                         </Card>
                                 )})
                                 :null

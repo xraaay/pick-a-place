@@ -3,15 +3,11 @@ import React from 'react';
 class Homepage extends React.Component {
     constructor(props){
         super(props)
-        this.getGeoLocation = this.getGeoLocation.bind(this)
+        this.rtd = this.rtd.bind(this)
     }
 
-    getGeoLocation(){
-        if (navigator.geolocation) {
-            this.props.history.push("/rtd")
-        } else {
-            alert("GeoLocation not available")
-        }
+    rtd(){
+        this.props.history.push("/rtd")
     }
 
     render(){
@@ -32,6 +28,7 @@ class Homepage extends React.Component {
                                 <h2 className="text-white mb-4">What do you want to eat, dammit</h2>
                                 <p className="text-white-50">For those who don't know what the to eat.</p>
                             </div>
+
                         </div>
                         {/* <img src="img/ipad.png" className="img-fluid" alt="" /> */}
                     </div>
@@ -39,7 +36,7 @@ class Homepage extends React.Component {
                 <br /><br /><br /><br /><br /><br />
                 <div className="featured-text text-center">
                     <p className="text-black-50 mb-0 ">Allow us to decide for you.</p>
-                    <button type="button" className="btn btn-secondary mx-auto" onClick={this.getGeoLocation}>Roll the Dice</button>
+                    <button type="button" className="btn btn-secondary mx-auto" onClick={this.rtd}>Roll the Dice</button>
                 </div>
                 <br /><br /><br /><br /><br /><br />
             </React.Fragment>
