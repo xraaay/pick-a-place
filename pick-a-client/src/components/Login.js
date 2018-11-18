@@ -64,4 +64,4 @@ const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user))
 })
 
-export default withCookies(connect(null, mapDispatchToProps)(Login))
+export default connect(null, mapDispatchToProps)(withCookies(Login))

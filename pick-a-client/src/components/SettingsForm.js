@@ -53,7 +53,7 @@ class SettingsForm extends React.Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    <h1>Save Settings</h1>
+                    <h1></h1>
                     <div className="col-sm-6">
                         <label>Name</label>
                         <input type="text" name="name" value={this.state.name} onChange={this.inputChange} className="form-control" />

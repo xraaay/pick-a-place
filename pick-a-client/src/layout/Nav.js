@@ -28,6 +28,9 @@ class Nav extends React.Component {
             case 5:
                 this.props.history.push("/rtd")
                 break;
+            case 6:
+                this.props.history.push("/wyr")
+                break;
             default:
                 console.log("error")
         } 
@@ -40,25 +43,25 @@ class Nav extends React.Component {
         const loggedIn = this.props.user ? (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 2)}} style={buttons}>Sign Up</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 2)}} style={buttons}>Sign Up</a>
                 </li>
             </ul>
         ) : (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 6)}} style={buttons}>Would You Rather</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 6)}} style={buttons}>Would You Rather</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={buttons}>Roll The Dice</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={buttons}>Roll The Dice</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>Settings</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>Settings</a>
                 </li>
             </ul>
         )
@@ -66,7 +69,7 @@ class Nav extends React.Component {
             <React.Fragment>
                     <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav" style={navbar}>
                         <div className="container">
-                            <a href="" className="navbar-brand js-scroll-trigger"style={title} onClick={e => {this.navigate(e, 0)}}>Pick a Place</a>
+                            <a href="#" className="navbar-brand js-scroll-trigger"style={title} onClick={e => {this.navigate(e, 0)}}>Pick a Place</a>
                             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i className="fas fa-bars"></i>

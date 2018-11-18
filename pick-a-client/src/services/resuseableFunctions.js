@@ -13,3 +13,7 @@ export const getGeoLocation = (fn) => {
         alert("GeoLocation not available")
     }
 }
+
+export const randomNumberOfArr = (arr) => {
+    return Math.floor(Math.random() * arr.length)
+}

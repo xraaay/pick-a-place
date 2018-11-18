@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, CardText, Button, CardDeck, Badge } from 'reactstrap';
+import { Card, CardTitle, CardText, Button, CardDeck, Badge, ButtonToolbar, ButtonGroup } from 'reactstrap';
 
 class ViewSettings extends React.Component {
     constructor(props){
@@ -8,6 +8,8 @@ class ViewSettings extends React.Component {
         this.state = {
             settings: []
         }
+        this.rollTheDice = this.rollTheDice.bind(this);
+        this.wouldYouRather = this.wouldYouRather.bind(this)
     }
 
     componentDidMount(){
@@ -33,6 +35,10 @@ class ViewSettings extends React.Component {
         this.props.history.push("/rtd/" + id)
     }
 
+    wouldYouRather(id){
+        this.props.history.push("/wyr/" + id)
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -43,21 +49,33 @@ class ViewSettings extends React.Component {
                                 let price = JSON.parse(item.Price).sort((a, b) => a-b);
                                 let dollarSign = price.map((item, index) => (index ? ', ': "") + "$".repeat(item))
                                 return (
-                                        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-sm-3">
+                                        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-sm-4">
                                             {/* <CardTitle>Location: {item.Location}</CardTitle>
                                             <CardSubtitle>Radius: {item.Radius}mi</CardSubtitle> */}
+                                            <CardTitle className="text-center">
+                                                {item.Name}
+                                            </CardTitle>
                                             <CardText>
-                                                <h4 style={{textAlign:'center'}}>{item.Name}</h4>
-                                                <p><strong>Location: </strong>{item.Location} <span className="glyphicon glyphicon-pencil"></span></p>
-                                                <p><strong>Open Now: </strong>
+                                                <span>
+                                                    <strong>Location: </strong>
+                                                    <br></br>
+                                                    {item.Location}
+                                                </span> 
+                                                <span className="glyphicon glyphicon-pencil"></span>
+                                                <br></br>
+                                                <span><strong >Open Now: </strong>
                                                     {item.OpenNow 
                                                         ?<Badge color="success">Yes</Badge>
                                                         :<Badge color="danger">No</Badge>
                                                     }
-                                                </p>
-                                                <p><strong>Price: </strong>{dollarSign}</p>
+                                                </span>
+                                                <br></br>
+                                                <span><strong>Price: </strong>{dollarSign}</span>
                                             </CardText>
-                                            <Button onClick={e => {this.rollTheDice(item.Id)}}>Select</Button>
+                                            <ButtonGroup>
+                                                <Button outline color="info" onClick={e => {this.rollTheDice(item.Id)}}>RTD</Button>
+                                                <Button outline color="primary" onClick={e => {this.wouldYouRather(item.Id)}}>WYR</Button>
+                                            </ButtonGroup>
                                         </Card>
                                 )})
                                 :null
