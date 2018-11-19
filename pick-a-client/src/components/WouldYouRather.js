@@ -102,12 +102,11 @@ class WouldYouRather extends React.Component {
                         <div className="col-sm-6">
                             {this.state.first && this.state.first.map(item => {
                                 return (
-                                    <React.Fragment>
+                                    <React.Fragment key={item.id} >
                                         <CSSTransition 
-                                            key={item.id} 
                                             in={true}
                                             appear={true}
-                                            timeout={2000}
+                                            timeout={1000}
                                             classNames="fade-card"
                                         >
                                             <YelpCard result={item}/>
@@ -120,12 +119,11 @@ class WouldYouRather extends React.Component {
                         <div className="col-sm-6">
                             {this.state.second && this.state.second.map(item => {
                                 return (
-                                    <React.Fragment>
+                                    <React.Fragment key={item.id} >
                                         <CSSTransition 
-                                            key={item.id} 
                                             in={true}
                                             appear={true}
-                                            timeout={2000}
+                                            timeout={1000}
                                             classNames="fade-card"
                                         >
                                             <YelpCard result={item}/>

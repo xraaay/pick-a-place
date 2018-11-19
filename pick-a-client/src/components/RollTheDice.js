@@ -70,7 +70,7 @@ class RollTheDice extends React.Component {
                                     key={item.id} 
                                     in={true}
                                     appear={true}
-                                    timeout={1500}
+                                    timeout={1000}
                                     classNames="fade-card"
                                 >
                                     <YelpCard result={item} />

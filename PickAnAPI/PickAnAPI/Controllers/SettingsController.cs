@@ -65,7 +65,7 @@ namespace PickAnAPI.Controllers
         [HttpGet, Route("search/{id:int}")]
         public async Task<HttpResponseMessage> GetBusinesses(int id)
         {
-            YelpRequest settings = _settingsService.GetSettingsById(id);
+            YelpRequest settings = _settingsService.SearchById(id);
             return await _yelpService.GetBusinesses(settings);
         }
 
@@ -74,6 +74,13 @@ namespace PickAnAPI.Controllers
         {
             _settingsService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Success");
+        }
+
+        [HttpGet, Route("{id:int}")]
+        public HttpResponseMessage GetById(int id)
+        {
+            Settings setting = _settingsService.GetById(id);
+            return Request.CreateResponse(HttpStatusCode.OK, setting);
         }
     }
 }

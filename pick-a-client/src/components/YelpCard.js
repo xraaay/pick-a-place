@@ -14,13 +14,13 @@ class YelpCard extends React.Component {
                         <CardImg src={this.props.result.image_url} style={{flex:'none', width:'100%'}}/>
                     </div>
                 </a>
-                <CardTitle className="text-center">{this.props.result.name}</CardTitle>
+                <CardTitle className="text-center"><strong>{this.props.result.name}</strong></CardTitle>
                 <CardText className="text-center">
                     <Rating 
                         readonly={true}
                         initialRating={this.props.result.rating} 
-                        // emptySymbol="glyphicon glyphicon-heart-empty"
-                        // fullSymbol="glyphicon glyphicon-heart"
+                        emptySymbol={<i className="far fa-star"></i>}
+                        fullSymbol={<i className="fas fa-star"></i>}
                     />
                     <br></br>
                     <span className="text-center">{this.props.result.is_closed 

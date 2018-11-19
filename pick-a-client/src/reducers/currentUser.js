@@ -4,7 +4,7 @@ const currentUser = (state = {}, action) => {
             return {
                 ...state,
                 user: action.user
-            }
+            }        
         default:
             return state
     }

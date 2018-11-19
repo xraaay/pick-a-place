@@ -68,5 +68,15 @@ namespace PickAnAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, "Logged In");
             }
         }
+
+        [HttpGet, Route("logout")]
+        public HttpResponseMessage Logout()
+        {
+            HttpCookie myCookie = new HttpCookie("myCookie");
+            myCookie.Expires = DateTime.Now.AddHours(-1);
+            HttpContext.Current.Response.Cookies.Add(myCookie);
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Logged Out");
+        }
     }
 }

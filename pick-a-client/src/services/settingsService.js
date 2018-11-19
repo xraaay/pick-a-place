@@ -29,4 +29,29 @@ function searchById(id){
     return axios(url,config)
 }
 
-export { getAll, create, searchById }
+function deleteById(id){
+    let url = "/api/settings/" + id;
+    const config = {
+        method: 'DELETE'
+    }
+    return axios(url, config)
+}
+
+function updateById(data){
+    let url = "/api/settings/" + data.id;
+    const config = {
+        method: 'PUT',
+        data: data
+    }
+    return axios(url, config)
+}
+
+function getById(id){
+    let url = "/api/settings/" + id;
+    const config = {
+        method: 'GET'
+    }
+    return axios(url, config)
+}
+
+export { getAll, create, searchById, deleteById, updateById, getById }

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Card, CardTitle, CardText, Button, CardDeck, Badge, ButtonToolbar, ButtonGroup } from 'reactstrap';
+import * as settingsService from '../services/settingsService'
 
 class ViewSettings extends React.Component {
     constructor(props){
@@ -39,6 +40,16 @@ class ViewSettings extends React.Component {
         this.props.history.push("/wyr/" + id)
     }
 
+    deleteSetting(id){
+        settingsService.deleteById(id)
+            .then(() => {this.getAllSettings()})
+            .catch(console.error)
+    }
+
+    toForm(id){
+        this.props.history.push("/search/" + id)
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -46,25 +57,26 @@ class ViewSettings extends React.Component {
                     <div className="col-sm-12">
                         <CardDeck>
                             {this.state.settings[0] ? this.state.settings.map(item => {
-                                let price = JSON.parse(item.Price).sort((a, b) => a-b);
+                                let price = JSON.parse(item.price).sort((a, b) => a-b);
                                 let dollarSign = price.map((item, index) => (index ? ', ': "") + "$".repeat(item))
                                 return (
                                         <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-sm-4">
                                             {/* <CardTitle>Location: {item.Location}</CardTitle>
                                             <CardSubtitle>Radius: {item.Radius}mi</CardSubtitle> */}
                                             <CardTitle className="text-center">
-                                                {item.Name}
+                                                {item.name}
+                                                <a href="#" onClick={e => {this.deleteSetting(item.id)}}><i className="fas fa-trash-alt" style={{color: 'white', position: 'absolute', top: 0, right: 0, padding:'10px'}}></i></a>
                                             </CardTitle>
                                             <CardText>
                                                 <span>
                                                     <strong>Location: </strong>
                                                     <br></br>
-                                                    {item.Location}
+                                                    {item.location}
                                                 </span> 
-                                                <span className="glyphicon glyphicon-pencil"></span>
+                                               
                                                 <br></br>
                                                 <span><strong >Open Now: </strong>
-                                                    {item.OpenNow 
+                                                    {item.openNow 
                                                         ?<Badge color="success">Yes</Badge>
                                                         :<Badge color="danger">No</Badge>
                                                     }
@@ -73,8 +85,11 @@ class ViewSettings extends React.Component {
                                                 <span><strong>Price: </strong>{dollarSign}</span>
                                             </CardText>
                                             <ButtonGroup>
-                                                <Button outline color="info" onClick={e => {this.rollTheDice(item.Id)}}>RTD</Button>
-                                                <Button outline color="primary" onClick={e => {this.wouldYouRather(item.Id)}}>WYR</Button>
+                                                <div className="col-sm-12">
+                                                    <Button className="col-sm-4" outline color="info" onClick={e => {this.rollTheDice(item.id)}}>RTD</Button>
+                                                    <Button className="col-sm-4" outline color="primary" onClick={e => {this.wouldYouRather(item.id)}}>WYR</Button>
+                                                    <Button className="col-sm-4" outline color="success" onClick={e => {this.toForm(item.id)}}>Edit</Button>
+                                                </div>
                                             </ButtonGroup>
                                         </Card>
                                 )})

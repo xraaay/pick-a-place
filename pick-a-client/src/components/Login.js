@@ -34,6 +34,7 @@ class Login extends React.Component {
                     this.props.setUser(user)
                 }
             })
+            .then(() => this.props.history.push("/search"))
             .catch(console.log)
     }
 

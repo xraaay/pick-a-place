@@ -14,13 +14,13 @@ class ContentRouter extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <TransitionGroup className="transition-group">
-                    <CSSTransition
+                {/* <TransitionGroup className="transition-group"> */}
+                    {/* <CSSTransition
                         key={this.props.location.key}
                         timeout={{ enter: 300, exit: 300 }}
                         classNames="fade"
                     >
-                        <section className="route-section">
+                        <section className="route-section"> */}
                             <Switch>
                                 {/* <Route path="/">Home */}
                                 {/* <Route path="/other">Other */}
@@ -28,13 +28,13 @@ class ContentRouter extends React.Component {
                                 <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
                                 <Route path="/settings" component={ViewSettings} />
-                                <Route path="/search" component={Search} />
+                                <Route path="/search/:id?" component={Search} />
                                 <Route path="/rtd/:id?" component={RollTheDice} />
                                 <Route path="/wyr/:id?" component={WouldYouRather} />
                             </Switch>
-                        </section>
-                    </CSSTransition>
-                </TransitionGroup>
+                        {/* </section>
+                    </CSSTransition> */}
+                {/* </TransitionGroup> */}
             </React.Fragment>
         )   
     }

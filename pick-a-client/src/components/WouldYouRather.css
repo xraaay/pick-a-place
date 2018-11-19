@@ -5,7 +5,7 @@
 
 .fade-card-appear.fade-card-appear-active {
     opacity: 1;
-    transition: opacity 2000ms linear;
+    transition: opacity 1000ms linear;
 }
 
 .fade-card-enter {
@@ -15,7 +15,7 @@
 
 .fade-card-enter.fade-card-enter-active {
     opacity: 1;
-    transition: opacity 2000ms linear;
+    transition: opacity 1000ms linear;
 }
 
 .fade-card-exit {
@@ -24,7 +24,7 @@
 
 .fade-card-exit.fade-card-exit-active {
     opacity: 0;
-    transition: opacity 2000ms linear;
+    transition: opacity 1000ms linear;
 }
 
 .fade-card-exit-done {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { logout } from '../services/userService'
+import { logoutUser } from '../actions'
 class Nav extends React.Component {
     constructor(props){
         super(props)
@@ -31,6 +33,12 @@ class Nav extends React.Component {
             case 6:
                 this.props.history.push("/wyr")
                 break;
+            case 7:
+                logout()
+                    .then(() => this.props.logout())
+                    .then(() => this.props.history.push("/"))
+                    .catch(console.error)
+                break;
             default:
                 console.log("error")
         } 
@@ -40,7 +48,7 @@ class Nav extends React.Component {
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
         const title = route === "/" ? null : {color: '#161616'}
         const buttons = route === "/" ? null : {color: 'rgba(0, 0, 0, 0.5)'}
-        const loggedIn = !this.props.user ? (
+        const loggedIn = !this.props.user.user ? (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
@@ -61,7 +69,10 @@ class Nav extends React.Component {
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>Settings</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>History</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 7)}} style={buttons}>Logout</a>
                 </li>
             </ul>
         )
@@ -85,7 +96,12 @@ class Nav extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.currentUser
 })
 
-export default withRouter(connect(mapStateToProps)(Nav))
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logoutUser())
+})
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav))

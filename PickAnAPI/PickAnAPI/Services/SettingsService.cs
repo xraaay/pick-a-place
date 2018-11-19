@@ -15,7 +15,7 @@ namespace PickAnAPI.Services
     {
         readonly string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
 
-        public YelpRequest GetSettingsById(int id)
+        public YelpRequest SearchById(int id)
         {
             using(SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -148,6 +148,40 @@ namespace PickAnAPI.Services
                 cmd.Parameters.AddWithValue("@Id", id);
 
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public Settings GetById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = "Settings_Select_ById";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                Settings setting = null;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        setting = new Settings()
+                        {
+                            Id = (int)reader["Id"],
+                            Name = (string)reader["Name"],
+                            Location = (string)reader["Location"],
+                            OpenNow = (bool)reader["OpenNow"],
+                            Price = (string)reader["Price"],
+                            Radius = (int)reader["Radius"]
+                        };
+                    }
+                }
+                return setting;
+
             }
         }
     }
