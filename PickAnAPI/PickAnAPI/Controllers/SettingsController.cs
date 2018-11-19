@@ -1,5 +1,6 @@
 ﻿using PickAnAPI.Models;
 using PickAnAPI.Models.Requests;
+using PickAnAPI.Models.Requests.Settings;
 using PickAnAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,31 @@ namespace PickAnAPI.Controllers
         [HttpPost]
         public HttpResponseMessage Post(SettingsCreate req)
         {
+            if(req == null)
+            {
+                ModelState.AddModelError("Null", "Model cannot be null");
+            }
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
             int id = _settingsService.Create(req);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
+        }
+
+        [HttpPut, Route("{id:int}")]
+        public HttpResponseMessage UpdateSettings(SettingsUpdate req,int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Error", "Model Error");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            if(req.Id != id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Ids do not match");
+            }
+            _settingsService.Update(req);
             return Request.CreateResponse(HttpStatusCode.OK, id);
         }
 
@@ -42,6 +67,13 @@ namespace PickAnAPI.Controllers
         {
             YelpRequest settings = _settingsService.GetSettingsById(id);
             return await _yelpService.GetBusinesses(settings);
+        }
+
+        [HttpDelete, Route("{id:int}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            _settingsService.Delete(id);
+            return Request.CreateResponse(HttpStatusCode.OK, "Success");
         }
     }
 }

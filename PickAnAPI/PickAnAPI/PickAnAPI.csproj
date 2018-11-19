@@ -188,8 +188,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Requests\Settings\SettingsUpdate.cs" />
     <Compile Include="Models\Requests\YelpRequest.cs" />
-    <Compile Include="Models\Requests\SettingsCreate.cs" />
+    <Compile Include="Models\Requests\Settings\SettingsCreate.cs" />
     <Compile Include="Models\Requests\UserCreate.cs" />
     <Compile Include="Models\Requests\UserLogin.cs" />
     <Compile Include="Models\Responses\Business.cs" />

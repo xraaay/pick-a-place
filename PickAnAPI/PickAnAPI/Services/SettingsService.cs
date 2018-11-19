@@ -1,5 +1,6 @@
 ﻿using PickAnAPI.Models;
 using PickAnAPI.Models.Requests;
+using PickAnAPI.Models.Requests.Settings;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -62,7 +63,7 @@ namespace PickAnAPI.Services
                 SqlCommand cmd = conn.CreateCommand();
 
                 cmd.CommandText = "Settings_SelectAll";
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 List<Settings> settings = new List<Settings>();
 
@@ -94,7 +95,7 @@ namespace PickAnAPI.Services
 
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "Settings_Insert";
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Name", req.Name);
                 cmd.Parameters.AddWithValue("@Location", req.Location);
                 cmd.Parameters.AddWithValue("@Radius", req.Radius);
@@ -109,6 +110,44 @@ namespace PickAnAPI.Services
 
                 return id;
 
+            }
+        }
+
+        public void Update(SettingsUpdate req)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "Settings_Update";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", req.Id);
+                cmd.Parameters.AddWithValue("@Name", req.Name);
+                cmd.Parameters.AddWithValue("@Location", req.Location);
+                cmd.Parameters.AddWithValue("@Radius", req.Radius);
+                cmd.Parameters.AddWithValue("@Price", req.Price);
+                cmd.Parameters.AddWithValue("@OpenNow", req.OpenNow);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = "Settings_Delete";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                cmd.ExecuteNonQuery();
             }
         }
     }
