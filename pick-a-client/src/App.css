@@ -30,3 +30,36 @@
     transform: rotate(360deg);
   }
 }
+
+.fade-card-appear { 
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-card-appear.fade-card-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+.fade-card-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-card-enter.fade-card-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+.fade-card-exit {
+  opacity: 1;
+}
+
+.fade-card-exit.fade-card-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms linear;
+}
+
+.fade-card-exit-done {
+  opacity: 0;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
 import { BrowserRouter } from 'react-router-dom'
 import { CookiesProvider } from 'react-cookie'
 import CookieCheck from './layout/CookieCheck';

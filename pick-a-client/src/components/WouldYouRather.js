@@ -1,11 +1,9 @@
 import React from 'react';
 import * as settingsService from '../services/settingsService'
 import * as yelpService from '../services/yelpService'
-import { shuffleResults, getGeoLocation, randomNumber, randomNumberOfArr } from '../services/resuseableFunctions'
+import { shuffleResults, getGeoLocation } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-// import CSSTransition from 'react-CSSTransition-group/CSSTransition'
-// import CSSCSSTransition from 'react-CSSTransition-group/CSSCSSTransition'
+import { CSSTransition } from 'react-transition-group'
 import "./WouldYouRather.css"
 
 

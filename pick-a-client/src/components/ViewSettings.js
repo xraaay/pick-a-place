@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, CardTitle, CardText, Button, CardDeck, Badge, ButtonToolbar, ButtonGroup } from 'reactstrap';
+import { Card, CardTitle, CardText, Button, CardDeck, Badge, ButtonGroup } from 'reactstrap';
 import * as settingsService from '../services/settingsService'
 
 class ViewSettings extends React.Component {
@@ -60,7 +60,8 @@ class ViewSettings extends React.Component {
                                 let price = JSON.parse(item.price).sort((a, b) => a-b);
                                 let dollarSign = price.map((item, index) => (index ? ', ': "") + "$".repeat(item))
                                 return (
-                                        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-sm-4">
+                                    <div className="col-sm-4">
+                                        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', margin: '5px' }}>
                                             {/* <CardTitle>Location: {item.Location}</CardTitle>
                                             <CardSubtitle>Radius: {item.Radius}mi</CardSubtitle> */}
                                             <CardTitle className="text-center">
@@ -85,13 +86,14 @@ class ViewSettings extends React.Component {
                                                 <span><strong>Price: </strong>{dollarSign}</span>
                                             </CardText>
                                             <ButtonGroup>
-                                                <div className="col-sm-12">
+                                                <div style={{width: "100%"}}>
                                                     <Button className="col-sm-4" outline color="info" onClick={e => {this.rollTheDice(item.id)}}>RTD</Button>
-                                                    <Button className="col-sm-4" outline color="primary" onClick={e => {this.wouldYouRather(item.id)}}>WYR</Button>
                                                     <Button className="col-sm-4" outline color="success" onClick={e => {this.toForm(item.id)}}>Edit</Button>
+                                                    <Button className="col-sm-4" outline color="primary" onClick={e => {this.wouldYouRather(item.id)}}>WYR</Button>
                                                 </div>
                                             </ButtonGroup>
                                         </Card>
+                                    </div>
                                 )})
                                 :null
                             }
