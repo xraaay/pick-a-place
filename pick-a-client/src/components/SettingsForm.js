@@ -10,7 +10,7 @@ class SettingsForm extends React.Component {
             location: '',
             radius: '',
             price: [],
-            openNow: '',
+            openNow: false,
             useLocation: false
         }
         this.inputChange = this.inputChange.bind(this)
@@ -125,3 +125,5 @@ class SettingsForm extends React.Component {
 }
 
 export default SettingsForm
+
+//wait, worth, long, 

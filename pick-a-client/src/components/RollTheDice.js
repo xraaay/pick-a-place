@@ -1,7 +1,7 @@
 import React from 'react';
 import * as yelpService from '../services/yelpService'
 import * as settingsService from '../services/settingsService'
-import { CardColumns } from 'reactstrap'
+import { Button, CardColumns, Collapse, ListGroup, ListGroupItem } from 'reactstrap'
 import { shuffleResults } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
@@ -10,7 +10,9 @@ class RollTheDice extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            results: []
+            results: [],
+            collapse: false,
+            waitList: [],
         }
         this.rtd = this.rtd.bind(this)
     }
@@ -59,6 +61,25 @@ class RollTheDice extends React.Component {
             .catch(console.log)
     }
 
+    toggleCollapse = str => {
+        if(this.state.waitList){
+            yelpService.scrape(str)
+                .then(response => {
+                    this.setState({
+                        collapse: true,
+                        waitList: response.data,
+                    })
+                })
+                .catch(console.error)
+        } else {
+            this.setState(prevState => {
+                return {
+                    collapse: !prevState.collapse
+                }    
+            })
+        }
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -73,11 +94,23 @@ class RollTheDice extends React.Component {
                                     timeout={1000}
                                     classNames="fade-card"
                                 >
-                                    <YelpCard result={item} />
+                                    <React.Fragment>
+                                        <YelpCard result={item} toggleCollapse={this.toggleCollapse} />
+                                    </React.Fragment>
                                 </CSSTransition>
                             )
                         })}
                     </CardColumns>
+                    <Collapse className="row" isOpen={this.state.collapse}>
+                        <ListGroup>
+                            {this.state.collapse && this.state.waitList.map(item => {
+                                return (
+                                    <ListGroupItem>{item}</ListGroupItem>
+                                )
+                            })
+                            }
+                        </ListGroup>
+                    </Collapse>
                 </div>
             </React.Fragment>
         )

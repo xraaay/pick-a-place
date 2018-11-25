@@ -9,4 +9,16 @@ function search(data){
     return axios(url, config)
 }
 
-export { search }
+function scrape(str){
+    let alias = str = "https://www.yelp.com/biz/" + str
+    let url = "/api/yelp/wait";
+    const config = {
+        method: 'POST',
+        data: {
+            value: alias
+        }
+    }
+    return axios(url, config)
+}
+
+export { search, scrape }

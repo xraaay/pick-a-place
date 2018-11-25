@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.10\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -189,6 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Requests\Settings\SettingsUpdate.cs" />
+    <Compile Include="Models\Requests\String.cs" />
     <Compile Include="Models\Requests\YelpRequest.cs" />
     <Compile Include="Models\Requests\Settings\SettingsCreate.cs" />
     <Compile Include="Models\Requests\UserCreate.cs" />
