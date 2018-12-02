@@ -69,25 +69,27 @@ class WouldYouRather extends React.Component {
     }
 
     select(num){
-        let { results } = this.state
-        let index = this.state.index + 1
-        if(this.state.maxResults > index){
-            let newResult = [results[index]]
-            switch(num){
-                case 1:
-                    this.setState({
-                        second: newResult,
-                        index: index,
-                    })
-                    break;
-                case 2:
-                    this.setState({
-                        first: newResult,
-                        index: index,
-                    })
-                    break;
-                default:
-                    console.log("error")
+        if(this.state.index <= 5){
+            let { results } = this.state
+            let index = this.state.index + 1
+            if(this.state.maxResults > index){
+                let newResult = [results[index]]
+                switch(num){
+                    case 1:
+                        this.setState({
+                            second: newResult,
+                            index: index,
+                        })
+                        break;
+                    case 2:
+                        this.setState({
+                            first: newResult,
+                            index: index,
+                        })
+                        break;
+                    default:
+                        console.log("error")
+                }
             }
         }
     }
@@ -96,6 +98,7 @@ class WouldYouRather extends React.Component {
         return (
             <React.Fragment>
                 <div className="container">
+                    <h1 className="text-center">You have {6-this.state.index} chances!</h1>
                     <div className="row">
                         <div className="col-sm-6">
                             {this.state.first && this.state.first.map(item => {
