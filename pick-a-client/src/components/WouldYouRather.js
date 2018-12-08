@@ -40,7 +40,7 @@ class WouldYouRather extends React.Component {
                 longitude: position.coords.longitude,
                 latitude: position.coords.latitude,
                 term: "restaurant",
-                radius: 16000,
+                radius: 8046,
                 limit: 50,
                 open_now: true,
                 price: 1

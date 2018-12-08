@@ -8,7 +8,7 @@ class SettingsForm extends React.Component {
         this.state = {
             name: '',
             location: '',
-            radius: '',
+            radius: 1609,
             price: [],
             openNow: false,
             useLocation: false
