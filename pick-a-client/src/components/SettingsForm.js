@@ -6,7 +6,7 @@ class SettingsForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '',
+            term: '',
             location: '',
             radius: 1609,
             price: [],
@@ -24,7 +24,7 @@ class SettingsForm extends React.Component {
                 .then(response => {
                     let setting = response.data
                     this.setState({
-                        name: setting.name,
+                        term: setting.term,
                         location: setting.location,
                         radius: setting.radius,
                         price: JSON.parse(setting.price),
@@ -44,7 +44,7 @@ class SettingsForm extends React.Component {
 
     submitBtn(position){
         const data = {
-            name: this.state.name,
+            term: this.state.term,
             radius: this.state.radius,
             price: JSON.stringify(this.state.price),
             openNow: this.state.openNow
@@ -57,7 +57,11 @@ class SettingsForm extends React.Component {
         }
         settingsService.create(data)
             .then(response => {
-                this.props.history.push("/settings")
+                if(response){
+                    this.props.history.push("/settings")
+                } else {
+                    alert("Error")
+                }
             })
             .catch(console.log)
     }
@@ -88,7 +92,7 @@ class SettingsForm extends React.Component {
                         <h1>Search</h1>
                         <FormGroup>
                             <Label>Search Term</Label>
-                            <Input type="text" name="name" value={this.state.name} onChange={this.inputChange} className="form-control" />
+                            <Input type="text" name="term" value={this.state.term} onChange={this.inputChange} className="form-control" />
                         </FormGroup>
                         <FormGroup>
                             <Label>Location</Label>
