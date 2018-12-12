@@ -10,7 +10,7 @@ function search(data){
 }
 
 function scrape(str){
-    let alias = str = "https://www.yelp.com/biz/" + str
+    let alias = "https://www.yelp.com/biz/" + str
     let url = "/api/yelp/wait";
     const config = {
         method: 'POST',
