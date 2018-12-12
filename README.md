@@ -19,6 +19,8 @@ Uses user-defined search query to generate two restaurants that the user can the
 Retrieves all comments tied to that specific restaurant that contain the keyword "wait".
 Allows users to see what other restaurant goer's have said about the wait time.
 
+---
+
 #### To Do
 
   - Currently, user-defined settings are not user-specific.
