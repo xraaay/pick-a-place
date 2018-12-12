@@ -74,7 +74,7 @@ namespace PickAnAPI.Services
                         Settings setting = new Settings()
                         {
                             Id = (int)reader["Id"],
-                            Name = (string)reader["Name"],
+                            Term = (string)reader["SearchTerm"],
                             Location = (string)reader["Location"],
                             OpenNow = (bool)reader["OpenNow"],
                             Price = (string)reader["Price"],
@@ -96,7 +96,7 @@ namespace PickAnAPI.Services
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "Settings_Insert";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Name", req.Name);
+                cmd.Parameters.AddWithValue("@SearchTerm", req.Term);
                 cmd.Parameters.AddWithValue("@Location", req.Location);
                 cmd.Parameters.AddWithValue("@Radius", req.Radius);
                 cmd.Parameters.AddWithValue("@Price", req.Price);
@@ -124,7 +124,7 @@ namespace PickAnAPI.Services
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Id", req.Id);
-                cmd.Parameters.AddWithValue("@Name", req.Name);
+                cmd.Parameters.AddWithValue("@SearchTerm", req.Term);
                 cmd.Parameters.AddWithValue("@Location", req.Location);
                 cmd.Parameters.AddWithValue("@Radius", req.Radius);
                 cmd.Parameters.AddWithValue("@Price", req.Price);
@@ -172,7 +172,7 @@ namespace PickAnAPI.Services
                         setting = new Settings()
                         {
                             Id = (int)reader["Id"],
-                            Name = (string)reader["Name"],
+                            Term = (string)reader["SearchTerm"],
                             Location = (string)reader["Location"],
                             OpenNow = (bool)reader["OpenNow"],
                             Price = (string)reader["Price"],

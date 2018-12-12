@@ -87,7 +87,7 @@ class SettingsForm extends React.Component {
                     <Form className="col-sm-6">
                         <h1>Search</h1>
                         <FormGroup>
-                            <Label>Name</Label>
+                            <Label>Search Term</Label>
                             <Input type="text" name="name" value={this.state.name} onChange={this.inputChange} className="form-control" />
                         </FormGroup>
                         <FormGroup>

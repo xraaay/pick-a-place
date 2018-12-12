@@ -11,7 +11,7 @@ namespace PickAnAPI.Models.Requests.Settings
         [Required]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Term { get; set; }
         [Required]
         public int Radius { get; set; }
         [Required]

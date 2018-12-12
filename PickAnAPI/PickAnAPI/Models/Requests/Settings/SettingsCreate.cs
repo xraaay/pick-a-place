@@ -9,7 +9,7 @@ namespace PickAnAPI.Models.Requests
     public class SettingsCreate
     {
         [Required]
-        public string Name { get; set; }
+        public string Term { get; set; }
         [Required]
         public int Radius { get; set; }
         [Required]
