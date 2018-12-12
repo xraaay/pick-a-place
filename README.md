@@ -1,7 +1,7 @@
 # Pick A Place
 
-### Utilizes Yelp's API to generate recommendations for restaurants with parameters for location, distance, price and search term.
-Made to help indecisive people choose a place to eat.
+### Made to help indecisive people choose a place to eat.
+Utilizes Yelp's API to generate recommendations for restaurants with parameters for location, distance, price and search term.
 
 ## Features
  
