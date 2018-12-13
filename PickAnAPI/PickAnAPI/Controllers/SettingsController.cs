@@ -66,7 +66,14 @@ namespace PickAnAPI.Controllers
         public async Task<HttpResponseMessage> GetBusinesses(int id)
         {
             YelpRequest settings = _settingsService.SearchById(id);
-            return await _yelpService.GetBusinesses(settings);
+            if(settings.CurrentLocation == false)
+            {
+                return await _yelpService.GetBusinesses(settings);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "Current Location Required");
+            }
         }
 
         [HttpDelete, Route("{id:int}")]

@@ -15,5 +15,6 @@ namespace PickAnAPI.Models.Requests
         public bool OpenNow { get; set; }
         public string Term { get; set; }
         public int Limit { get; set; }
+        public bool CurrentLocation { get; set; }
     }
 }

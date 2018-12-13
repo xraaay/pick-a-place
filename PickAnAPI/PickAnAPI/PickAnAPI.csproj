@@ -191,6 +191,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemResponses\BaseResponse.cs" />
     <Compile Include="Models\Requests\Settings\SettingsUpdate.cs" />
     <Compile Include="Models\Requests\String.cs" />
     <Compile Include="Models\Requests\YelpRequest.cs" />

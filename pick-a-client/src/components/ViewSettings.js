@@ -72,7 +72,7 @@ class ViewSettings extends React.Component {
                                                 <span>
                                                     <strong>Location: </strong>
                                                     <br></br>
-                                                    {item.location}
+                                                    {item.location || "Current Location"}
                                                 </span> 
                                                
                                                 <br></br>

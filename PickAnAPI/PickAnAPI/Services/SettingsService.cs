@@ -48,6 +48,17 @@ namespace PickAnAPI.Services
                             Limit = 50,
                             Term = "Restaurant"
                         };
+
+                        object currentLocation = reader["CurrentLocation"];
+                        if(currentLocation != DBNull.Value)
+                        {
+                            setting.CurrentLocation = (bool)currentLocation;
+                        }
+                        
+                        if(setting.CurrentLocation == true)
+                        {
+
+                        }
                     }
                 }
                 return setting;
@@ -75,11 +86,20 @@ namespace PickAnAPI.Services
                         {
                             Id = (int)reader["Id"],
                             Term = (string)reader["SearchTerm"],
-                            Location = (string)reader["Location"],
                             OpenNow = (bool)reader["OpenNow"],
                             Price = (string)reader["Price"],
-                            Radius = (int)reader["Radius"]
+                            Radius = (int)reader["Radius"],
                         };
+
+                        var location = reader["Location"];
+                        if(location != DBNull.Value)
+                        {
+                            setting.Location = (string)location;
+                        }
+                        else
+                        {
+                            setting.CurrentLocation = true;
+                        }
                         settings.Add(setting);
                     }
                 }
@@ -97,11 +117,10 @@ namespace PickAnAPI.Services
                 cmd.CommandText = "Settings_Insert";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@SearchTerm", req.Term);
-                cmd.Parameters.AddWithValue("@Location", req.Location);
                 cmd.Parameters.AddWithValue("@Radius", req.Radius);
                 cmd.Parameters.AddWithValue("@Price", req.Price);
                 cmd.Parameters.AddWithValue("@OpenNow", req.OpenNow);
-
+                cmd.Parameters.AddWithValue("@Location", req.Location);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                 cmd.ExecuteNonQuery();
