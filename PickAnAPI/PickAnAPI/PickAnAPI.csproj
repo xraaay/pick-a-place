@@ -192,6 +192,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemResponses\BaseResponse.cs" />
+    <Compile Include="Models\ItemResponses\ErrorResponse.cs" />
+    <Compile Include="Models\ItemResponses\ItemResponse.cs" />
+    <Compile Include="Models\ItemResponses\ItemsResponse.cs" />
+    <Compile Include="Models\ItemResponses\SuccessResponse.cs" />
     <Compile Include="Models\Requests\Settings\SettingsUpdate.cs" />
     <Compile Include="Models\Requests\String.cs" />
     <Compile Include="Models\Requests\YelpRequest.cs" />

@@ -5,8 +5,11 @@ using System.Web;
 
 namespace PickAnAPI.Models.ItemResponses
 {
-    public abstract class BaseResponse
+    public class SuccessResponse : BaseResponse
     {
-        public bool IsSuccessful { get; set; }
+        public SuccessResponse()
+        {
+            this.IsSuccessful = true;
+        }
     }
 }

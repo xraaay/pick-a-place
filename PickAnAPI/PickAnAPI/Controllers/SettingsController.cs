@@ -1,4 +1,5 @@
 ﻿using PickAnAPI.Models;
+using PickAnAPI.Models.ItemResponses;
 using PickAnAPI.Models.Requests;
 using PickAnAPI.Models.Requests.Settings;
 using PickAnAPI.Services;
@@ -28,7 +29,10 @@ namespace PickAnAPI.Controllers
         public HttpResponseMessage GetSettings()
         {
             List<Settings> settings = _settingsService.GetSettings();
-            return Request.CreateResponse(HttpStatusCode.OK, settings);
+            return Request.CreateResponse(HttpStatusCode.OK, new ItemsResponse<Settings>
+            {
+                Items = settings
+            });
         }
 
         [HttpPost]
@@ -43,7 +47,10 @@ namespace PickAnAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             int id = _settingsService.Create(req);
-            return Request.CreateResponse(HttpStatusCode.OK, id);
+            return Request.CreateResponse(HttpStatusCode.OK, new ItemResponse<int>
+            {
+                Item = id
+            });
         }
 
         [HttpPut, Route("{id:int}")]
@@ -56,10 +63,13 @@ namespace PickAnAPI.Controllers
             }
             if(req.Id != id)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Ids do not match");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new ErrorResponse("Id's do not match"));
             }
             _settingsService.Update(req);
-            return Request.CreateResponse(HttpStatusCode.OK, id);
+            return Request.CreateResponse(HttpStatusCode.OK, new ItemResponse<int>
+            {
+                Item = id
+            });
         }
 
         [HttpGet, Route("search/{id:int}")]
@@ -80,14 +90,17 @@ namespace PickAnAPI.Controllers
         public HttpResponseMessage Delete(int id)
         {
             _settingsService.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK, "Success");
+            return Request.CreateResponse(HttpStatusCode.OK, new SuccessResponse());
         }
 
         [HttpGet, Route("{id:int}")]
         public HttpResponseMessage GetById(int id)
         {
             Settings setting = _settingsService.GetById(id);
-            return Request.CreateResponse(HttpStatusCode.OK, setting);
+            return Request.CreateResponse(HttpStatusCode.OK, new ItemResponse<Settings>
+            {
+                Item = setting
+            });
         }
     }
 }

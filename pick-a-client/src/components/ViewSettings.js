@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Card, CardTitle, CardText, Button, CardDeck, Badge, ButtonGroup } from 'reactstrap';
 import * as settingsService from '../services/settingsService'
 
@@ -18,18 +17,13 @@ class ViewSettings extends React.Component {
     }
 
     getAllSettings(){
-        let url = "/api/settings"
-        const config = {
-            method: 'GET'
-        }
-        let response = axios(url, config)
+        settingsService.getAll()
             .then(response => {
                 this.setState({
-                    settings: response.data
+                    settings: response.items
                 })
             })
             .catch(console.log)
-        return response
     }
 
     rollTheDice(id){

@@ -6,8 +6,8 @@ function getAll(){
         method: 'GET'
     }
     return axios(url, config)
-        .then(console.log)
-        .catch(console.log)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 function create(data){
@@ -17,8 +17,8 @@ function create(data){
         data: data
     }
     return axios(url, config)
-        .then(console.log)
-        .catch(console.log)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 function searchById(id){
@@ -27,6 +27,8 @@ function searchById(id){
         method: 'GET'
     }
     return axios(url,config)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 function deleteById(id){
@@ -44,6 +46,8 @@ function updateById(data){
         data: data
     }
     return axios(url, config)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 function getById(id){
@@ -52,6 +56,16 @@ function getById(id){
         method: 'GET'
     }
     return axios(url, config)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 export { getAll, create, searchById, deleteById, updateById, getById }
+
+function responseSuccessHandler(response){
+    return response.data
+}
+
+function responseErrorHandler(err){
+    console.log(err)
+}
