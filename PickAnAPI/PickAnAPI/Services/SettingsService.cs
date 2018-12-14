@@ -46,7 +46,7 @@ namespace PickAnAPI.Services
                             Radius = (int)reader["Radius"],
                             Price = price,
                             Limit = 50,
-                            Term = "Restaurant"
+                            Term = (string)reader["SearchTerm"]
                         };
 
                         object currentLocation = reader["CurrentLocation"];

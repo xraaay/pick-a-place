@@ -59,7 +59,7 @@ class ViewSettings extends React.Component {
                                             {/* <CardTitle>Location: {item.Location}</CardTitle>
                                             <CardSubtitle>Radius: {item.Radius}mi</CardSubtitle> */}
                                             <CardTitle className="text-center">
-                                                {item.name}
+                                                {item.term}
                                                 <a href="#" onClick={e => {this.deleteSetting(item.id)}}><i className="fas fa-trash-alt" style={{color: 'white', position: 'absolute', top: 0, right: 0, padding:'10px'}}></i></a>
                                             </CardTitle>
                                             <CardText>

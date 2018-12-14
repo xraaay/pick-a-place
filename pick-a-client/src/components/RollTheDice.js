@@ -52,7 +52,7 @@ class RollTheDice extends React.Component {
         }
         promise
             .then(response => {
-                let shuffle = shuffleResults(response.data.businesses)
+                let shuffle = shuffleResults(response.businesses)
                 let three = shuffle.slice(0,3)
                 this.setState({
                     results: three
