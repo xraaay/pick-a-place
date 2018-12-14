@@ -49,12 +49,13 @@ class WouldYouRather extends React.Component {
         }
         promise
             .then(response => {
-                let businesses = response.data.businesses 
+                let businesses = response.businesses 
                 if(businesses.length < 2){
                     alert("Not Enough Businesses Found")
                 } else {
-                    let shuffle = shuffleResults(response.data.businesses)
-                    let maxResults = response.data.businesses.length-1
+                    debugger
+                    let shuffle = shuffleResults(response.businesses)
+                    let maxResults = response.businesses.length-1
                     let arrOne = [shuffle[0]]
                     let arrTwo = [shuffle[1]]
                     this.setState({
