@@ -28,6 +28,7 @@ Allows users to see what other restaurant goer's have said about the wait time.
  - Add additional pictures or descriptions to results
  - Add would you rather for default search
  - Navigate from Search Form to Roll The Dice
+ - Highlight wait keyword in waitlist
  
 #### Non-DB Build
  - Separate branch for non-DB build
