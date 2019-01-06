@@ -36,4 +36,4 @@ Allows users to see what other restaurant goer's have said about the wait time.
   - Remove users
   - Replace API calls with Redux
   - Send client to RTD or WYR from search without pulling from a DB
-  - 
+  - Split non-db to it's own repo
