@@ -23,8 +23,17 @@ Allows users to see what other restaurant goer's have said about the wait time.
 
 #### To Do
 
-  - Currently, user-defined settings are not user-specific.
-  - History of chosen restaurants tied to users.
-  - Add additional pictures or descriptions to results
-  - Add would you rather for default search
-  - Navigate from Search Form to Roll The Dice
+ - Currently, user-defined settings are not user-specific.
+ - History of chosen restaurants tied to users.
+ - Add additional pictures or descriptions to results
+ - Add would you rather for default search
+ - Navigate from Search Form to Roll The Dice
+ - Highlight wait keyword in waitlist
+ 
+#### Non-DB Build
+ - Separate branch for non-DB build
+  - Set settings into local storage
+  - Remove users
+  - Replace API calls with Redux
+  - Send client to RTD or WYR from search without pulling from a DB
+  - 
