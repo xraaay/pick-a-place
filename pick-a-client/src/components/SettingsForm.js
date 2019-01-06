@@ -92,11 +92,11 @@ class SettingsForm extends React.Component {
                         <h1>Search</h1>
                         <FormGroup>
                             <Label>Search Term</Label>
-                            <Input type="text" name="term" value={this.state.term} onChange={this.inputChange} className="form-control" />
+                            <Input type="text" name="term" value={this.state.term} onChange={this.inputChange} className="form-control" placeholder="Enter a Search Term" />
                         </FormGroup>
                         <FormGroup>
                             <Label>Location</Label>
-                            <Input type="text" name="location" value={this.state.location} onChange={this.inputChange} className="form-control" disabled={this.state.useLocation} />
+                            <Input type="text" name="location" value={this.state.location} onChange={this.inputChange} className="form-control" disabled={this.state.useLocation} placeholder="Enter a location" />
                             <CustomInput type="checkbox" name="useLocation" id="useLocation" onChange={this.inputChange} checked={this.state.useLocation} label="Use Current Location" />
                         </FormGroup>
                         <FormGroup>
@@ -109,15 +109,17 @@ class SettingsForm extends React.Component {
                             </Input>
                         </FormGroup>
                         <FormGroup>
-                            <CustomInput type="checkbox" name="openNow" id="openNow" onClick={this.inputChange} checked={this.state.openNow} label="Open Now" />
-                        </FormGroup>
-                        <FormGroup>
+                            <Label>Price</Label>
+                            <br></br>
                             <ButtonGroup>
                                 <Button color="secondary" onClick={() => this.priceBtn(1)} active={this.state.price.includes(1)}>$</Button>
                                 <Button color="secondary" onClick={() => this.priceBtn(2)} active={this.state.price.includes(2)}>$$</Button>
                                 <Button color="secondary" onClick={() => this.priceBtn(3)} active={this.state.price.includes(3)}>$$$</Button>
                                 <Button color="secondary" onClick={() => this.priceBtn(4)} active={this.state.price.includes(4)}>$$$$</Button>
                             </ButtonGroup>
+                        </FormGroup>
+                        <FormGroup>
+                            <CustomInput type="checkbox" name="openNow" id="openNow" onClick={this.inputChange} checked={this.state.openNow} label="Open Now" />
                         </FormGroup>
                         <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>Search</Button>
 

@@ -48,7 +48,7 @@ class Nav extends React.Component {
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
         const title = route === "/" ? null : {color: '#161616'}
         const buttons = route === "/" ? null : {color: 'rgba(0, 0, 0, 0.5)'}
-        const loggedIn = !this.props.user.user ? (
+        const loggedIn = this.props.user.user ? (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 1)}} style={buttons}>Log In</a>
