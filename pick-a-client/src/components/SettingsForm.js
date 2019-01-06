@@ -1,6 +1,7 @@
 import React from 'react';
 import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup } from 'reactstrap'
+import { connect } from 'react-redux'
 
 class SettingsForm extends React.Component {
     constructor(props){
@@ -55,6 +56,7 @@ class SettingsForm extends React.Component {
         } else {
             data.location = this.state.location
         }
+        //Use redux to store information after search request
         settingsService.create(data)
             .then(response => {
                 if(response){
@@ -130,6 +132,10 @@ class SettingsForm extends React.Component {
     }
 }
 
-export default SettingsForm
+const mapDispatchToProps = dispatch => ({
+    setResponse: response => dispatch(setResponse(response))
+})
+
+export default connect(null, mapDispatchToProps)(SettingsForm)
 
 //wait, worth, long, 
