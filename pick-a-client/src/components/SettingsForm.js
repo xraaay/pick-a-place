@@ -2,7 +2,7 @@ import React from 'react';
 import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup } from 'reactstrap'
 import { connect } from 'react-redux'
-
+import { setResponse } from '../actions/index'
 class SettingsForm extends React.Component {
     constructor(props){
         super(props)
@@ -60,6 +60,7 @@ class SettingsForm extends React.Component {
         settingsService.create(data)
             .then(response => {
                 if(response){
+                    setResponse(response)
                     this.props.history.push("/settings")
                 } else {
                     alert("Error")
