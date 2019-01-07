@@ -7,6 +7,8 @@ function search(data){
         data: data
     }
     return axios(url, config)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
 function scrape(str){
@@ -19,6 +21,15 @@ function scrape(str){
         }
     }
     return axios(url, config)
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler)
 }
 
+function responseSuccessHandler(response){
+    return response.data
+}
+
+function responseErrorHandler(err){
+    console.log(err)
+}
 export { search, scrape }

@@ -53,7 +53,6 @@ class WouldYouRather extends React.Component {
                 if(businesses.length < 2){
                     alert("Not Enough Businesses Found")
                 } else {
-                    debugger
                     let shuffle = shuffleResults(response.businesses)
                     let maxResults = response.businesses.length-1
                     let arrOne = [shuffle[0]]

@@ -83,6 +83,12 @@ class RollTheDice extends React.Component {
     render(){
         return (
             <React.Fragment>
+                <div className="row">
+                    <div className="container">
+                        <h1 style={{textAlign:'center'}}>Here are your choices</h1>
+                    
+                    </div>
+                </div>
                 <div className="container">
                     <CardColumns>
                         {this.state.results[0] && this.state.results.map(item => {
