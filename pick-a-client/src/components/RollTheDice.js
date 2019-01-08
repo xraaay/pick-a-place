@@ -5,6 +5,7 @@ import { Button, CardColumns, Collapse, ListGroup, ListGroupItem } from 'reactst
 import { shuffleResults } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
 
 class RollTheDice extends React.Component {
     constructor(props){
@@ -36,7 +37,7 @@ class RollTheDice extends React.Component {
     rtd(position){
         let promise;
         let query = {}
-        if(this.props.match.params.id){
+        if(this.props.response){
             promise = settingsService.searchById(this.props.match.params.id)
         } else {
             query = {
@@ -123,4 +124,8 @@ class RollTheDice extends React.Component {
     }
 }
 
-export default RollTheDice
+const mapStateToProps = state => ({
+    response: state.response
+})
+
+export default connect(mapStateToProps)(RollTheDice)
