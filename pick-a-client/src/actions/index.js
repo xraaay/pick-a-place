@@ -9,7 +9,7 @@ export const logoutUser = () => {
     })
 }
 
-export const setResponse = response => ({
-    type: 'SET_RESPONSE',
+export const setSearch = response => ({
+    type: 'SET_SEARCH',
     response: response  
 })

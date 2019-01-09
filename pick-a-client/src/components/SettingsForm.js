@@ -2,7 +2,7 @@ import React from 'react';
 import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup } from 'reactstrap'
 import { connect } from 'react-redux'
-import { setResponse } from '../actions/index'
+import { setSearch } from '../actions/index'
 class SettingsForm extends React.Component {
     constructor(props){
         super(props)
@@ -57,16 +57,17 @@ class SettingsForm extends React.Component {
             data.location = this.state.location
         }
         //Use redux to store information after search request
-        settingsService.create(data)
-            .then(response => {
-                if(response){
-                    setResponse(response)
-                    this.props.history.push("/settings")
-                } else {
-                    alert("Error")
-                }
-            })
-            .catch(console.log)
+        setSearch(data)
+        // settingsService.create(data)
+        //     .then(response => {
+        //         if(response){
+        //             setResponse(response)
+        //             this.props.history.push("/settings")
+        //         } else {
+        //             alert("Error")
+        //         }
+        //     })
+        //     .catch(console.log)
     }
 
     checkUseLocation = () => {
@@ -124,7 +125,8 @@ class SettingsForm extends React.Component {
                         <FormGroup>
                             <CustomInput type="checkbox" name="openNow" id="openNow" onClick={this.inputChange} checked={this.state.openNow} label="Open Now" />
                         </FormGroup>
-                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>Search</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>RTD</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>WYR</Button>
 
                     </Form>
                 </div>
@@ -134,7 +136,7 @@ class SettingsForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setResponse: response => dispatch(setResponse(response))
+    setSearch: data => dispatch(setSearch(data))
 })
 
 export default connect(null, mapDispatchToProps)(SettingsForm)
