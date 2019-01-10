@@ -17,10 +17,13 @@ class WouldYouRather extends React.Component {
             first: '',
             second: '',
             index: 1,
-            maxResults: ''
+            maxResults: '',
+            collapse: false,
+            waitList: []
         }
         this.wyr = this.wyr.bind(this)
-        this.select = this.select.bind(this)
+        this.select = this.select.bind(this);
+        this.toggleCollapse = this.toggleCollapse.bind(this)
     }
 
     componentDidMount(){
@@ -111,6 +114,25 @@ class WouldYouRather extends React.Component {
         }
     }
 
+    toggleCollapse = str => {
+        if(this.state.waitList){
+            yelpService.scrape(str)
+                .then(response => {
+                    this.setState({
+                        collapse: true,
+                        waitList: response.data,
+                    })
+                })
+                .catch(console.error)
+        } else {
+            this.setState(prevState => {
+                return {
+                    collapse: !prevState.collapse
+                }    
+            })
+        }
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -144,7 +166,7 @@ class WouldYouRather extends React.Component {
                                             timeout={800}
                                             classNames="fade-card"
                                         >
-                                            <YelpCard result={item}/>
+                                            <YelpCard result={item} />
                                         </CSSTransition>
                                         <button type="button" className="btn btn-secondary btn-block mx-auto" onClick={e => {this.select(2)}}>Select</button>
                                     </React.Fragment>
