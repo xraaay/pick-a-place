@@ -1,5 +1,4 @@
 const response = (state = {}, action) => {
-    debugger
     switch(action.type){
         case 'SET_SEARCH':
             return {

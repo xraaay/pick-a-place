@@ -1,8 +1,9 @@
 import React from 'react';
-import * as settingsService from '../services/settingsService'
+// import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { connect } from 'react-redux'
 import { setSearch } from '../actions/index'
+import { withRouter } from 'react-router-dom'
 
 
 class SettingsForm extends React.Component {
@@ -15,17 +16,19 @@ class SettingsForm extends React.Component {
             price: [],
             openNow: false,
             useLocation: false,
-            showModal: false
+            showModal: false,
+            selection: ''
         }
         this.inputChange = this.inputChange.bind(this)
         this.submitBtn = this.submitBtn.bind(this);
         this.priceBtn = this.priceBtn.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.grabValues = this.grabValues.bind(this)
+        this.grabValues = this.grabValues.bind(this);
+        this.reroute = this.reroute.bind(this)
     }
 
     grabValues() {
-        let { response } = this.props
+        let { response } = this.props.data
         this.setState({
             term: response.term,
             location: response.location,
@@ -56,12 +59,30 @@ class SettingsForm extends React.Component {
         } else {
             data.location = this.state.location
         }
-        //Use redux to store information after search request
-        debugger
-        setSearch(data)
+        this.props.setSearch(data)
+        this.setState({
+            showModal: false
+        })
+        this.reroute()
     }
 
-    checkUseLocation = () => {
+    reroute = () => {
+        switch(this.state.selection){
+            case 'wyr':
+                this.props.history.push("/wyr")
+                break;
+            case 'rtd':
+                this.props.history.push("/rtd")
+                break;
+            default:
+                console.log("error")
+        }
+    }
+
+    checkUseLocation = selection => {
+        this.setState({
+            selection: selection
+        })
         if (this.state.useLocation) {
             navigator.geolocation.getCurrentPosition(this.submitBtn)
         } else {
@@ -80,7 +101,7 @@ class SettingsForm extends React.Component {
     }
 
     toggleModal(){
-        if(this.props.response){
+        if(this.props.data.response){
             this.grabValues()
         }
         this.setState(prevState => {
@@ -133,8 +154,8 @@ class SettingsForm extends React.Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>RollTheDice</Button>
-                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>WouldYouRather</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={()=> {this.checkUseLocation("rtd")}}>RollTheDice</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={() => {this.checkUseLocation("wyr")}}>WouldYouRather</Button>
                     </ModalFooter>
                 </Modal>
             </React.Fragment>
@@ -147,9 +168,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-    response: state.search
+    data: state.response
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsForm)
-
-//wait, worth, long, 
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SettingsForm))
