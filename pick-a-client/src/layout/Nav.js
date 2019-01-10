@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../services/userService'
 import { logoutUser } from '../actions'
+import SettingsForm from '../components/SettingsForm'
+
 class Nav extends React.Component {
     constructor(props){
         super(props)
@@ -24,21 +26,21 @@ class Nav extends React.Component {
             case 3:
                 this.props.history.push("/search")
                 break;
-            case 4:
-                this.props.history.push("/settings")
-                break;
+            // case 4:
+            //     this.props.history.push("/settings")
+            //     break;
             case 5:
                 this.props.history.push("/rtd")
                 break;
             case 6:
                 this.props.history.push("/wyr")
                 break;
-            case 7:
-                logout()
-                    .then(() => this.props.logout())
-                    .then(() => this.props.history.push("/"))
-                    .catch(console.error)
-                break;
+            // case 7:
+            //     logout()
+            //         .then(() => this.props.logout())
+            //         .then(() => this.props.history.push("/"))
+            //         .catch(console.error)
+            //     break;
             default:
                 console.log("error")
         } 
@@ -66,14 +68,15 @@ class Nav extends React.Component {
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={buttons}>Roll The Dice</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
+                    {/* <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a> */}
+                    <SettingsForm buttons={buttons}/>
                 </li>
                 {/* <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>History</a>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 7)}} style={buttons}>Logout</a>
-                </li>
+                </li> */}
             </ul>
         )
         return (
