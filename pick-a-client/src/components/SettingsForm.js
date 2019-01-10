@@ -3,6 +3,8 @@ import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { connect } from 'react-redux'
 import { setSearch } from '../actions/index'
+
+
 class SettingsForm extends React.Component {
     constructor(props) {
         super(props)
@@ -13,29 +15,25 @@ class SettingsForm extends React.Component {
             price: [],
             openNow: false,
             useLocation: false,
-            isOpen: false
+            showModal: false
         }
         this.inputChange = this.inputChange.bind(this)
         this.submitBtn = this.submitBtn.bind(this);
         this.priceBtn = this.priceBtn.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.grabValues = this.grabValues.bind(this)
     }
 
-    componentDidMount() {
-        // if (this.props.match.params.id) {
-        //     settingsService.getById(this.props.match.params.id)
-        //         .then(response => {
-        //             let setting = response.data
-        //             this.setState({
-        //                 term: setting.term,
-        //                 location: setting.location,
-        //                 radius: setting.radius,
-        //                 price: JSON.parse(setting.price),
-        //                 openNow: setting.openNow
-        //             })
-        //         })
-        //         .catch(console.log)
-        // }
+    grabValues() {
+        let { response } = this.props
+        this.setState({
+            term: response.term,
+            location: response.location,
+            radius: response.radius,
+            price: response.price,
+            openNow: response.openNow,
+            useLocation: response.useLocation
+        })
     }
 
     inputChange(e) {
@@ -59,17 +57,8 @@ class SettingsForm extends React.Component {
             data.location = this.state.location
         }
         //Use redux to store information after search request
+        debugger
         setSearch(data)
-        // settingsService.create(data)
-        //     .then(response => {
-        //         if(response){
-        //             setResponse(response)
-        //             this.props.history.push("/settings")
-        //         } else {
-        //             alert("Error")
-        //         }
-        //     })
-        //     .catch(console.log)
     }
 
     checkUseLocation = () => {
@@ -91,9 +80,12 @@ class SettingsForm extends React.Component {
     }
 
     toggleModal(){
+        if(this.props.response){
+            this.grabValues()
+        }
         this.setState(prevState => {
             return {
-                isOpen: !prevState.isOpen
+                showModal: !prevState.showModal
             }    
         })
     }
@@ -102,7 +94,7 @@ class SettingsForm extends React.Component {
         return (
             <React.Fragment>
                 <a href="#" className="nav-link js-scroll-trigger" style={this.props.buttons} onClick={this.toggleModal}>Search</a>
-                <Modal isOpen={this.state.isOpen} toggle={this.toggleModal}>
+                <Modal isOpen={this.state.showModal} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal} style={{textAlign: 'center'}}>Search</ModalHeader>
                     <ModalBody>
                         <Form className="col-sm-6">
@@ -135,14 +127,14 @@ class SettingsForm extends React.Component {
                                 </ButtonGroup>
                             </FormGroup>
                             <FormGroup>
-                                <CustomInput type="checkbox" name="openNow" id="openNow" onClick={this.inputChange} checked={this.state.openNow} label="Open Now" />
+                                <CustomInput type="checkbox" name="openNow" id="openNow" onChange={this.inputChange} checked={this.state.openNow} label="Open Now" />
                             </FormGroup>
 
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>RTD</Button>
-                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>WYR</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>RollTheDice</Button>
+                        <Button type="button" className="btn btn-secondary mx-auto" onClick={this.checkUseLocation}>WouldYouRather</Button>
                     </ModalFooter>
                 </Modal>
             </React.Fragment>
