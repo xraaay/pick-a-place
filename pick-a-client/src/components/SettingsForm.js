@@ -59,11 +59,27 @@ class SettingsForm extends React.Component {
         } else {
             data.location = this.state.location
         }
-        this.props.setSearch(data)
-        this.setState({
-            showModal: false
-        })
-        this.reroute()
+        debugger
+        if(this.validation(data)){
+            this.props.setSearch(data)
+            this.setState({
+                showModal: false
+            })
+            this.reroute()
+        }
+    }
+
+    validation(data){
+        let price = JSON.parse(data.price)
+        if(!data.term){
+            alert("Term is required")
+        } else if(!data.longitude && !data.location){
+            alert("Location required")
+        } else if(!price[0]){
+            alert("Price is required")
+        } else {
+            return true
+        }
     }
 
     reroute = () => {
@@ -91,6 +107,7 @@ class SettingsForm extends React.Component {
     }
 
     priceBtn(selected) {
+        debugger
         const index = this.state.price.indexOf(selected);
         if (index < 0) {
             this.state.price.push(selected);

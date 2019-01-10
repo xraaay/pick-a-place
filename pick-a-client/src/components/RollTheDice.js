@@ -19,10 +19,16 @@ class RollTheDice extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.match.params.id){
+        if(this.props.data.response){
             this.rtd()
         } else {
             this.getGeoLocation();
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.data.response !== this.props.data.response){
+            this.rtd()
         }
     }
 
@@ -37,8 +43,9 @@ class RollTheDice extends React.Component {
     rtd(position){
         let promise;
         let query = {}
-        if(this.props.response){
-            promise = settingsService.searchById(this.props.match.params.id)
+        if(this.props.data.response){
+            // promise = settingsService.searchById(this.props.match.params.id)
+            promise = yelpService.search(this.props.data.response)
         } else {
             query = {
                 longitude: position.coords.longitude,
@@ -53,6 +60,7 @@ class RollTheDice extends React.Component {
         }
         promise
             .then(response => {
+                debugger
                 let shuffle = shuffleResults(response.businesses)
                 let three = shuffle.slice(0,3)
                 this.setState({
@@ -125,7 +133,7 @@ class RollTheDice extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    response: state.response
+    data: state.response
 })
 
 export default connect(mapStateToProps)(RollTheDice)

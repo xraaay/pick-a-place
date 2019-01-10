@@ -24,7 +24,7 @@ namespace PickAnAPI.Controllers
         [HttpPost, Route]
         public async Task<HttpResponseMessage> GetBusinesses(YelpRequest req)
         {
-            object test = Request.Content;
+            //object test = Request.Content;
             return await _yelpService.GetBusinesses(req);
             //return Request.CreateResponse(HttpStatusCode.OK, response);
         }
@@ -35,6 +35,6 @@ namespace PickAnAPI.Controllers
             var test = _yelpService.ScrapeYelp(businessUrl.Value);
             return Request.CreateResponse(HttpStatusCode.OK, test);
         }
-      
+        
     }
 }
