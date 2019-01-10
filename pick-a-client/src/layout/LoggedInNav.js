@@ -1,11 +1,6 @@
 import React from 'react';
 
 class LoggedInNav extends React.Component {
-    constructor(props){
-        super(props)
-
-    }
-    
     render(){
         let route = this.props.location.pathname
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}

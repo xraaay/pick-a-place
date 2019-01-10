@@ -68,9 +68,9 @@ class Nav extends React.Component {
                 <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 4)}} style={buttons}>History</a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 7)}} style={buttons}>Logout</a>
                 </li>
