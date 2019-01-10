@@ -59,7 +59,6 @@ class SettingsForm extends React.Component {
         } else {
             data.location = this.state.location
         }
-        debugger
         if(this.validation(data)){
             this.props.setSearch(data)
             this.setState({
@@ -107,7 +106,6 @@ class SettingsForm extends React.Component {
     }
 
     priceBtn(selected) {
-        debugger
         const index = this.state.price.indexOf(selected);
         if (index < 0) {
             this.state.price.push(selected);

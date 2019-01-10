@@ -4,6 +4,7 @@ import * as yelpService from '../services/yelpService'
 import { shuffleResults, getGeoLocation } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
 import "./WouldYouRather.css"
 
 
@@ -23,18 +24,34 @@ class WouldYouRather extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.match.params.id){
+        if(this.props.data.response){
             this.wyr()
         } else {
             getGeoLocation(this.wyr)
         }
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.data.response !== this.props.data.response){
+            this.wyr()
+        }
+    }
+
+    getGeoLocation(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.wyr)
+        } else {
+            alert("GeoLocation not available")
+        }
+    }
+
+
     wyr(position){
         let promise;
         let query = {}
-        if(this.props.match.params.id){
-            promise = settingsService.searchById(this.props.match.params.id)
+        if(this.props.data.response){
+            // promise = settingsService.searchById(this.props.match.params.id)
+            promise = yelpService.search(this.props.data.response)
         } else {
             query = {
                 longitude: position.coords.longitude,
@@ -107,7 +124,7 @@ class WouldYouRather extends React.Component {
                                         <CSSTransition 
                                             in={true}
                                             appear={true}
-                                            timeout={1000}
+                                            timeout={800}
                                             classNames="fade-card"
                                         >
                                             <YelpCard result={item}/>
@@ -124,7 +141,7 @@ class WouldYouRather extends React.Component {
                                         <CSSTransition 
                                             in={true}
                                             appear={true}
-                                            timeout={1000}
+                                            timeout={800}
                                             classNames="fade-card"
                                         >
                                             <YelpCard result={item}/>
@@ -141,4 +158,8 @@ class WouldYouRather extends React.Component {
     }
 }
 
-export default WouldYouRather
+const mapStateToProps = state => ({
+    data: state.response
+})
+
+export default connect(mapStateToProps)(WouldYouRather)
