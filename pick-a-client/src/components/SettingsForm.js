@@ -121,7 +121,8 @@ class SettingsForm extends React.Component {
         this.setState({ price: [...this.state.price] });
     }
 
-    toggleModal(){
+    toggleModal(e){
+        e.preventDefault()
         if(this.props.data.response){
             this.grabValues()
         }

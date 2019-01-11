@@ -54,9 +54,9 @@ class YelpCard extends React.Component {
                         })}
                     </CardText>
                 </Card>
-                <a href={this.props.result.url} style={{textDecoration: 'none'}}>
+                {/* <a href={this.props.result.url} style={{textDecoration: 'none'}}>
                     <Button block>Visit Yelp Page</Button>
-                </a>
+                </a> */}
                 {/* <WaitList alias={this.props.result.alias} /> */}
             </React.Fragment>
         )
