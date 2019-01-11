@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from 'react-rating'
 import { Card, CardImg, CardText, CardTitle, Badge, Button, Collapse, ListGroup, ListGroupItem } from 'reactstrap'
-import * as yelpService from '../services/yelpService'
+import WaitList from './WaitList'
 
 class YelpCard extends React.Component {
     constructor(props){
@@ -53,8 +53,11 @@ class YelpCard extends React.Component {
                             return (index ? ', ': "") + item.title
                         })}
                     </CardText>
-                    <Button block onClick={e => {this.props.toggleCollapse(this.props.result.alias)}}>View Wait List</Button>
                 </Card>
+                <a href={this.props.result.url} style={{textDecoration: 'none'}}>
+                    <Button block>Visit Yelp Page</Button>
+                </a>
+                {/* <WaitList alias={this.props.result.alias} /> */}
             </React.Fragment>
         )
     }

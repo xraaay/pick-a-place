@@ -4,6 +4,7 @@ import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup, Modal,
 import { connect } from 'react-redux'
 import { setSearch } from '../actions/index'
 import { withRouter } from 'react-router-dom'
+import swal from 'sweetalert2';
 
 
 class SettingsForm extends React.Component {
@@ -69,16 +70,21 @@ class SettingsForm extends React.Component {
     }
 
     validation(data){
-        let price = JSON.parse(data.price)
+        let price = JSON.parse(data.price);
+        let error
         if(!data.term){
-            alert("Term is required")
+            error = "Term is required"
         } else if(!data.longitude && !data.location){
-            alert("Location required")
+            error = "Location required"
         } else if(!price[0]){
-            alert("Price is required")
+            error = "Price is required"
         } else {
             return true
         }
+        swal({
+            type: "error",
+            title: error
+        })
     }
 
     reroute = () => {
