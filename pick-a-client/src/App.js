@@ -16,11 +16,6 @@ class App extends Component {
     return (
 			<Provider store={store}>
 				<BrowserRouter>
-					{/* <div className="App">
-					<header className="App-header">
-						<img src="https://melbournechapter.net/images/compass-clipart-1.png" className="App-logo" alt="logo" />
-					</header>
-					</div> */}
 					<CookiesProvider>
 						<CookieCheck />
 					</CookiesProvider>

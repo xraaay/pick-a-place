@@ -8,7 +8,6 @@ import ViewSettings from "../components/ViewSettings";
 import Search from '../components/SettingsForm';
 import RollTheDice from "../components/RollTheDice";
 import WouldYouRather from '../components/WouldYouRather'
-// import { TransitionGroup, CSSTransition } from "react-transition-group"
 
 class ContentRouter extends React.Component {
     render(){

@@ -1,5 +1,4 @@
 import React from 'react';
-// import * as settingsService from '../services/settingsService'
 import { Form, CustomInput, Label, FormGroup, Input, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { connect } from 'react-redux'
 import { setSearch } from '../actions/index'

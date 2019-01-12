@@ -53,7 +53,6 @@ class WouldYouRather extends React.Component {
         let promise;
         let query = {}
         if(this.props.data.response){
-            // promise = settingsService.searchById(this.props.match.params.id)
             promise = yelpService.search(this.props.data.response)
         } else {
             query = {
