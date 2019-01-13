@@ -32,6 +32,10 @@ namespace PickAnAPI.Services
             PropertyInfo[] props = type.GetProperties();
             foreach (PropertyInfo x in props)
             {
+                if(x.Name == "CurrentLocation")
+                {
+                    continue;
+                }
                 if(x.GetValue(req) != null)
                 {
                     string name = x.Name.ToLower();

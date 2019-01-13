@@ -17,7 +17,7 @@ class Selected extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-    settings: state.search
+    search: state.search
 })
 
 export default connect(mapStateToProps)(Selected);

@@ -33,9 +33,9 @@ class SettingsForm extends React.Component {
             term: search.term,
             location: search.location,
             radius: search.radius,
-            price: search.price,
+            price: JSON.parse(search.price),
             openNow: search.openNow,
-            useLocation: search.useLocation
+            useLocation: search.currentLocation
         })
     }
 
@@ -51,7 +51,8 @@ class SettingsForm extends React.Component {
             term: this.state.term,
             radius: this.state.radius,
             price: JSON.stringify(this.state.price),
-            openNow: this.state.openNow
+            openNow: this.state.openNow,
+            currentLocation: this.state.useLocation
         }
         if (position) {
             data.longitude = position.coords.longitude
