@@ -27,7 +27,7 @@ class WouldYouRather extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.data.response){
+        if(this.props.data.search){
             this.wyr()
         } else {
             getGeoLocation(this.wyr)
@@ -35,7 +35,7 @@ class WouldYouRather extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if(prevProps.data.response !== this.props.data.response){
+        if(prevProps.data.search !== this.props.data.search){
             this.wyr()
         }
     }
@@ -52,8 +52,8 @@ class WouldYouRather extends React.Component {
     wyr(position){
         let promise;
         let query = {}
-        if(this.props.data.response){
-            promise = yelpService.search(this.props.data.response)
+        if(this.props.data.search){
+            promise = yelpService.search(this.props.data.search)
         } else {
             query = {
                 longitude: position.coords.longitude,
@@ -180,7 +180,7 @@ class WouldYouRather extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: state.response
+    data: state.search
 })
 
 export default connect(mapStateToProps)(WouldYouRather)

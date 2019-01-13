@@ -9,7 +9,7 @@ export const logoutUser = () => {
     })
 }
 
-export const setSearch = response => ({
+export const setSearch = search => ({
     type: 'SET_SEARCH',
-    response: response  
+    search: search  
 })

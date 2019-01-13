@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import currentUser from './currentUser'
-import response from './response'
+import search from './search'
 
 const appReducer = combineReducers({
     currentUser,
-    response
+    search
 })
 
 const rootReducer = (state, action) => {

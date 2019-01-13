@@ -28,14 +28,14 @@ class SettingsForm extends React.Component {
     }
 
     grabValues() {
-        let { response } = this.props.data
+        let { search } = this.props.data
         this.setState({
-            term: response.term,
-            location: response.location,
-            radius: response.radius,
-            price: response.price,
-            openNow: response.openNow,
-            useLocation: response.useLocation
+            term: search.term,
+            location: search.location,
+            radius: search.radius,
+            price: search.price,
+            openNow: search.openNow,
+            useLocation: search.useLocation
         })
     }
 
@@ -122,7 +122,7 @@ class SettingsForm extends React.Component {
 
     toggleModal(e){
         e.preventDefault()
-        if(this.props.data.response){
+        if(this.props.data.search){
             this.grabValues()
         }
         this.setState(prevState => {
@@ -189,7 +189,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-    data: state.response
+    data: state.search
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SettingsForm))

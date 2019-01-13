@@ -1,13 +1,13 @@
-const response = (state = {}, action) => {
+const search = (state = {}, action) => {
     switch(action.type){
         case 'SET_SEARCH':
             return {
                 ...state,
-                response: action.response
+                search: action.search
             }
             default: 
                 return state
     }
 } 
 
-export default response
+export default search
