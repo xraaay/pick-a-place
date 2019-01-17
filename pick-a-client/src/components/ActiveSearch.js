@@ -2,27 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 class ActiveSearch extends React.Component {
-    componentDidMount(){
-
-    }
-
     render(){
         const setting = this.props.data.search
-        let location;
-        if(setting.currentLocation){
-            location = setting.currentLocation
-        } else {
-            location = setting.location
-        }
-        return (
+        let render = this.props.data.search ? 
+        (
             <div className="container-fluid">
-                <p>{setting.term}</p>
-                <p>{setting.currentLocation}</p>
-                <p>{setting.location}</p>
-                <p>{setting.openNow}</p>
-                <p>{setting.price}</p>
-                <p>{setting.radius}</p>
+                <p>Term: {setting.term}</p>
+                {/* <p>{location}</p> */}
+                <p>Location: {setting.location}</p>
+                <p>Open Now: {setting.openNow}</p>
+                <p>Price: {setting.price}</p>
+                <p>Radius: {setting.radius}</p>
             </div>
+        ) 
+        : 
+        (
+            <div></div>
+        )
+        return (
+            <React.Fragment>
+                {render}
+            </React.Fragment>
         )
     }
 }
