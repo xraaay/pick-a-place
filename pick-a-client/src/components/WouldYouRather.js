@@ -6,6 +6,7 @@ import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import "./WouldYouRather.css"
+import swal from 'sweetalert2'
 
 
 class WouldYouRather extends React.Component {
@@ -70,7 +71,10 @@ class WouldYouRather extends React.Component {
             .then(response => {
                 let businesses = response.businesses 
                 if(businesses.length < 2){
-                    alert("Not Enough Businesses Found")
+                    swal({
+                        type: "error",
+                        title: "Not Enough Businesses Found"
+                    })
                 } else {
                     let shuffle = shuffleResults(response.businesses)
                     let maxResults = response.businesses.length-1

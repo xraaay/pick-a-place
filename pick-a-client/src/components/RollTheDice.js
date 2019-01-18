@@ -5,6 +5,7 @@ import { shuffleResults } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
+import swal from 'sweetalert2'
 
 class RollTheDice extends React.Component {
     constructor(props){
@@ -33,7 +34,10 @@ class RollTheDice extends React.Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.rtd)
         } else {
-            alert("GeoLocation not available")
+            swal({
+                type: 'error',
+                title: "GeoLocation not available"
+            })
         }
     }
 
