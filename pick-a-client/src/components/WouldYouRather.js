@@ -75,10 +75,10 @@ class WouldYouRather extends React.Component {
                         type: "error",
                         title: "Not Enough Businesses Found"
                     })
-                } else {
-                    let shuffle = shuffleResults(response.businesses)
-                    let maxResults = response.businesses.length-1
-                    let arrOne = [shuffle[0]]
+                    } else {
+                        let shuffle = shuffleResults(response.businesses)
+                        let maxResults = response.businesses.length-1
+                        let arrOne = [shuffle[0]]
                     let arrTwo = [shuffle[1]]
                     this.setState({
                         results: shuffle,
