@@ -75,7 +75,6 @@ class RollTheDice extends React.Component {
                 <div className="row">
                     <div className="container">
                         <h1 style={{textAlign:'center'}}>Here are your choices</h1>
-                    
                     </div>
                 </div>
                 <div className="container">

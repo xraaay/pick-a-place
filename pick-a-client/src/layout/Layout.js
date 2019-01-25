@@ -11,7 +11,7 @@ class Layout extends React.Component{
         return (
             <React.Fragment>
                 <Nav />
-                {this.props.location.pathname === "/rtd" || "/wyr" ? <ActiveSearch /> : null}
+                {/* {this.props.location.pathname === "/rtd" || "/wyr" ? <ActiveSearch /> : null} */}
                 <ContentRouter />
             </React.Fragment>
         )
