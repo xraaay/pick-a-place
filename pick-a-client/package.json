@@ -34,8 +34,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:50109",
+  "proxy": "http://pick-a-place.azurewebsites.net/",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0"
-  }
+  },
+  "homepage": "http://pick-a-place.azurewebsites.net/"
 }
