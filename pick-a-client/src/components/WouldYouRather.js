@@ -7,7 +7,7 @@ import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import "./WouldYouRather.css"
 import swal from 'sweetalert2'
-
+import { Alert } from 'reactstrap'
 
 class WouldYouRather extends React.Component {
     constructor(props){
@@ -43,7 +43,11 @@ class WouldYouRather extends React.Component {
 
     getGeoLocation(){
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.wyr)
+            navigator.geolocation.getCurrentPosition(this.wyr, 
+            swal({
+                type: "error",
+                title: "Location not found"
+            }))
         } else {
             alert("GeoLocation not available")
         }
@@ -145,6 +149,7 @@ class WouldYouRather extends React.Component {
 
         return (
             <React.Fragment>
+                {this.state.showAlert ? <Alert isOpen={this.state.showAlert} /> : null}
                 <div className="row">
                     <div className="container text-center">
                         <h1 style={headerText}>Would You Rather</h1>
