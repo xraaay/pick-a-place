@@ -70,17 +70,17 @@ class RollTheDice extends React.Component {
     }
 
     render(){
-        const headingStyle = {
-            textAlign: "center",
-            fontFamily: "roboto",
-            fontWeight: "bold"
+        const headerText = {
+            fontFamily: "Varela Round",
+            fontSize: "2.5rem",
+            lineHeight: "2.5rem"
         }
 
         return (
             <React.Fragment>
                 <div className="row">
-                    <div className="container">
-                        <h1 className="mx-auto my-0" style={headingStyle}>Roll The Dice</h1>
+                    <div className="container mb-2">
+                        <h1 className="text-center" style={headerText}>Roll The Dice</h1>
                     </div>
                 </div>
                 <div className="container">

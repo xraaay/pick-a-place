@@ -137,17 +137,18 @@ class WouldYouRather extends React.Component {
     }
 
     render(){
-        const headingStyle = {
-            textAlign: "center",
-            fontFamily: "roboto",
-            fontWeight: "bold"
+        const headerText = {
+            fontFamily: "Varela Round",
+            fontSize: "2.5rem",
+            lineHeight: "2.5rem"
         }
+
         return (
             <React.Fragment>
                 <div className="row">
-                    <div className="container">
-                        <h1 className="mx-auto my-0" style={headingStyle}>Would You Rather</h1>
-                        <h3 className="text-center">You have {6-this.state.index} chances!</h3>
+                    <div className="container text-center">
+                        <h1 style={headerText}>Would You Rather</h1>
+                        <h3>You have {6-this.state.index} chances!</h3>
                     </div>
                 </div>
                 <div className="container">
