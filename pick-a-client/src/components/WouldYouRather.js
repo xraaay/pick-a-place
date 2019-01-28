@@ -137,10 +137,20 @@ class WouldYouRather extends React.Component {
     }
 
     render(){
+        const headingStyle = {
+            textAlign: "center",
+            fontFamily: "roboto",
+            fontWeight: "bold"
+        }
         return (
             <React.Fragment>
+                <div className="row">
+                    <div className="container">
+                        <h1 className="mx-auto my-0" style={headingStyle}>Would You Rather</h1>
+                        <h3 className="text-center">You have {6-this.state.index} chances!</h3>
+                    </div>
+                </div>
                 <div className="container">
-                    <h1 className="text-center">You have {6-this.state.index} chances!</h1>
                     <div className="row">
                         <div className="col-sm-6">
                             {this.state.first && this.state.first.map(item => {
