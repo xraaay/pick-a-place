@@ -35,7 +35,7 @@ class Homepage extends React.Component {
                 </section>
                 <br /><br /><br /><br /><br /><br />
                 <div className="featured-text text-center">
-                    <p className="text-black-50 mb-0 ">Allow us to decide for you.</p>
+                    <p className="text-black-50 mb-0 ">Let us to decide for you.</p>
                     <button type="button" className="btn btn-secondary mx-auto" onClick={this.rtd}>Roll the Dice</button>
                 </div>
                 <br /><br /><br /><br /><br /><br />

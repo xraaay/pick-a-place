@@ -1,7 +1,7 @@
 import React from 'react';
 import * as settingsService from '../services/settingsService'
 import * as yelpService from '../services/yelpService'
-import { shuffleResults, getGeoLocation } from '../services/resuseableFunctions'
+import { shuffleResults } from '../services/resuseableFunctions'
 import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
@@ -31,7 +31,7 @@ class WouldYouRather extends React.Component {
         if(this.props.data.search){
             this.wyr()
         } else {
-            getGeoLocation(this.wyr)
+            this.getGeoLocation(this.wyr)
         }
     }
 
@@ -43,13 +43,19 @@ class WouldYouRather extends React.Component {
 
     getGeoLocation(){
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.wyr, 
+            navigator.geolocation.getCurrentPosition(this.wyr, function(){
+                swal({
+                    type: "error",
+                    title: "Location not found",
+                    text: "Make sure you have https:// at the front of the url and allow location access. You can also use the Search functionality instead"
+                })
+            })
+        } else {
             swal({
                 type: "error",
-                title: "Location not found"
-            }))
-        } else {
-            alert("GeoLocation not available")
+                title: "Location not found",
+                text: "Make sure you have https:// at the front of the url and allow location access. You can also use the Search functionality instead"
+            })
         }
     }
 
@@ -153,7 +159,7 @@ class WouldYouRather extends React.Component {
                 <div className="row">
                     <div className="container text-center">
                         <h1 style={headerText}>Would You Rather</h1>
-                        <h3>You have {6-this.state.index} chances!</h3>
+                        <h3>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h3>
                     </div>
                 </div>
                 <div className="container">
