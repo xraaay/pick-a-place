@@ -272,7 +272,7 @@
     <Content Include="wwwroot\photos\houndstooth-pattern.png" />
     <Content Include="wwwroot\photos\seigaiha.png" />
     <Content Include="wwwroot\photos\swirl_pattern.png" />
-    <Content Include="wwwroot\precache-manifest.ce54a8e37aa0d60a1a9b88793788850e.js" />
+    <Content Include="wwwroot\precache-manifest.8ce9df7b7754b3972f18aa55973a74b8.js" />
     <Content Include="wwwroot\service-worker.js" />
     <Content Include="wwwroot\startbootstrap-grayscale\css\grayscale.css" />
     <Content Include="wwwroot\startbootstrap-grayscale\css\grayscale.min.css" />
@@ -1681,8 +1681,8 @@
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.slim.min.js" />
     <Content Include="wwwroot\static\css\1.3ff37302.chunk.css" />
     <Content Include="wwwroot\static\css\main.e4b17dab.chunk.css" />
-    <Content Include="wwwroot\static\js\1.4e39ea8b.chunk.js" />
-    <Content Include="wwwroot\static\js\main.839621fd.chunk.js" />
+    <Content Include="wwwroot\static\js\1.b81063eb.chunk.js" />
+    <Content Include="wwwroot\static\js\main.e72249d9.chunk.js" />
     <Content Include="wwwroot\static\js\runtime~main.229c360f.js" />
     <None Include="Properties\PublishProfiles\pick-a-place - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\PickAnAPI - Web Deploy.pubxml" />
@@ -1784,8 +1784,8 @@
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.slim.min.map" />
     <Content Include="wwwroot\static\css\1.3ff37302.chunk.css.map" />
     <Content Include="wwwroot\static\css\main.e4b17dab.chunk.css.map" />
-    <Content Include="wwwroot\static\js\1.4e39ea8b.chunk.js.map" />
-    <Content Include="wwwroot\static\js\main.839621fd.chunk.js.map" />
+    <Content Include="wwwroot\static\js\1.b81063eb.chunk.js.map" />
+    <Content Include="wwwroot\static\js\main.e72249d9.chunk.js.map" />
     <Content Include="wwwroot\static\js\runtime~main.229c360f.js.map" />
   </ItemGroup>
   <ItemGroup>

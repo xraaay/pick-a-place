@@ -8,6 +8,7 @@ import ViewSettings from "../components/ViewSettings";
 import Search from '../components/SettingsForm';
 import RollTheDice from "../components/RollTheDice";
 import WouldYouRather from '../components/WouldYouRather'
+import HelpPage from '../components/HelpPage';
 
 class ContentRouter extends React.Component {
     render(){
@@ -29,7 +30,7 @@ class ContentRouter extends React.Component {
                                 <Route path="/settings" component={ViewSettings} />
                                 <Route path="/search/:id?" component={Search} />
                                 <Route path="/rtd/:id?" component={RollTheDice} />
-                                <Route path="/wyr/:id?" component={WouldYouRather} />
+                                <Route path="/wyr/:id?" component={HelpPage} />
                             </Switch>
                         {/* </section>
                     </CSSTransition> */}
