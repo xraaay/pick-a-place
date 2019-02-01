@@ -36,7 +36,7 @@ class Homepage extends React.Component {
                 <br /><br /><br /><br /><br /><br />
                 <div className="featured-text text-center">
                     <p className="text-black-50 mb-0 ">Let us to decide for you.</p>
-                    <button type="button" className="btn btn-secondary mx-auto" onClick={this.rtd}>Roll the Dice</button>
+                    <button type="button" className="btn btn-primary mx-auto" style={{backgroundColor: "#64a19d", borderColor: "#64a19d"}} onClick={this.rtd}>Roll the Dice</button>
                 </div>
                 <br /><br /><br /><br /><br /><br />
             </React.Fragment>
