@@ -25,12 +25,13 @@ class ContentRouter extends React.Component {
                                 {/* <Route path="/">Home */}
                                 {/* <Route path="/other">Other */}
                                 <Route path="/" exact component={Homepage} />
-                                <Route path="/register" component={Register} />
+                                {/* <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
-                                <Route path="/settings" component={ViewSettings} />
+                                <Route path="/settings" component={ViewSettings} /> */}
+                                <Route path="/help/:type?" component={HelpPage} />
                                 <Route path="/search/:id?" component={Search} />
                                 <Route path="/rtd/:id?" component={RollTheDice} />
-                                <Route path="/wyr/:id?" component={HelpPage} />
+                                <Route path="/wyr/:id?" component={WouldYouRather} />
                             </Switch>
                         {/* </section>
                     </CSSTransition> */}
