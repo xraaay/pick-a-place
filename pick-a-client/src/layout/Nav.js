@@ -30,10 +30,12 @@ class Nav extends React.Component {
             //     this.props.history.push("/settings")
             //     break;
             case 5:
-                this.props.history.push("/help/rtd")
+                // this.props.history.push("/help/rtd")
+                this.props.history.push("/rtd")
                 break;
             case 6:
-                this.props.history.push("/help/wyr")
+                // this.props.history.push("/help/wyr")
+                this.props.history.push('/wyr')
                 break;
             // case 7:
             //     logout()
