@@ -78,7 +78,8 @@ class RollTheDice extends React.Component {
 
     render(){
         const headerText = {
-            fontFamily: "Varela Round",
+            // fontFamily: "Varela Round",
+            fontWeight: "700",
             fontSize: "2.5rem",
             lineHeight: "2.5rem"
         }
