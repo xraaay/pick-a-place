@@ -12,8 +12,10 @@ class RollTheDice extends React.Component {
         super(props)
         this.state = {
             results: [],
+            loaded: false
         }
-        this.rtd = this.rtd.bind(this)
+        this.rtd = this.rtd.bind(this);
+        this.reroll = this.reroll.bind(this)
     }
 
     componentDidMount(){
@@ -70,10 +72,19 @@ class RollTheDice extends React.Component {
                 let shuffle = shuffleResults(response.businesses)
                 let three = shuffle.slice(0,3)
                 this.setState({
-                    results: three
+                    results: three,
+                    loaded: true
                 })
             })
             .catch(console.log)
+    }
+
+    reroll(){
+        if(this.props.data.search){
+            this.rtd()
+        } else {
+            this.getGeoLocation();
+        }
     }
 
     render(){
@@ -86,7 +97,7 @@ class RollTheDice extends React.Component {
 
         return (
             <React.Fragment>
-                <div className="row">
+                <div className="row" style={{pointerEvents: "none"}}>
                     <div className="container mb-2">
                         <h1 className="text-center" style={headerText}>Roll The Dice</h1>
                     </div>
@@ -119,6 +130,7 @@ class RollTheDice extends React.Component {
                             }
                         </ListGroup>
                     </Collapse> */}
+                    {this.state.loaded ? <button type="button" className="btn btn-secondary btn-block mx-auto" onClick={e => {this.reroll()}}>Reroll</button> : null}
                 </div>
             </React.Fragment>
         )
