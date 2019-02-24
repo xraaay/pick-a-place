@@ -179,7 +179,7 @@ class WouldYouRather extends React.Component {
                                         >
                                             <YelpCard result={item}/>
                                         </CSSTransition>
-                                        <button type="button" className="btn btn-secondary btn-block mx-auto" onClick={e => {this.select(1)}} >Select</button>
+                                        <button type="button" className="btn btn-secondary btn-block mx-auto" style={{backgroundColor: "rgb(100, 161, 157)", borderColor: "rgb(100, 161, 157)"}} onClick={e => {this.select(1)}} >Select</button>
                                     </React.Fragment>
                                 )
                             })}
@@ -196,7 +196,7 @@ class WouldYouRather extends React.Component {
                                         >
                                             <YelpCard result={item} />
                                         </CSSTransition>
-                                        <button type="button" className="btn btn-secondary btn-block mx-auto" onClick={e => {this.select(2)}}>Select</button>
+                                        <button type="button" className="btn btn-secondary btn-block mx-auto" style={{backgroundColor: "rgb(100, 161, 157)", borderColor: "rgb(100, 161, 157)"}} onClick={e => {this.select(2)}}>Select</button>
                                     </React.Fragment>
                                     )
                                 })}

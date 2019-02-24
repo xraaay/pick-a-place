@@ -130,7 +130,7 @@ class RollTheDice extends React.Component {
                             }
                         </ListGroup>
                     </Collapse> */}
-                    {this.state.loaded ? <button type="button" className="btn btn-secondary btn-block mx-auto" onClick={e => {this.reroll()}}>Reroll</button> : null}
+                    {this.state.loaded ? <button type="button" className="btn btn-secondary btn-block mx-auto" style={{backgroundColor: "rgb(100, 161, 157)", borderColor: "rgb(100, 161, 157)"}} onClick={e => {this.reroll()}}>Reroll</button> : null}
                 </div>
             </React.Fragment>
         )
