@@ -99,7 +99,7 @@ class RollTheDice extends React.Component {
             <React.Fragment>
                 <div className="row" style={{pointerEvents: "none"}}>
                     <div className="container mb-2">
-                        <h1 className="text-center" style={headerText}>Roll The Dice</h1>
+                        {/* <h1 className="text-center" style={headerText}>Roll The Dice</h1> */}
                     </div>
                 </div>
                 <div className="container">

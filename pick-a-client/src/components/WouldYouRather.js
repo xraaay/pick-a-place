@@ -14,6 +14,7 @@ class WouldYouRather extends React.Component {
         super(props)
         this.state = {
             show: true,
+            loaded: false,
             results: [],
             first: '',
             second: '',
@@ -94,7 +95,8 @@ class WouldYouRather extends React.Component {
                         results: shuffle,
                         first: arrOne,
                         second: arrTwo,
-                        maxResults: maxResults
+                        maxResults: maxResults,
+                        loaded: true
                     })
                 }
             })
@@ -159,8 +161,8 @@ class WouldYouRather extends React.Component {
                 {this.state.showAlert ? <Alert isOpen={this.state.showAlert} /> : null}
                 <div className="row">
                     <div className="container text-center">
-                        <h1 style={headerText}>Would You Rather</h1>
-                        <h3>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h3>
+                        {/* <h1 style={headerText}>Would You Rather</h1> */}
+                        {this.state.loaded ? <h3>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h3> : null}
                     </div>
                 </div>
                 <div className="container">
