@@ -162,7 +162,7 @@ class WouldYouRather extends React.Component {
                 <div className="row">
                     <div className="container text-center">
                         {/* <h1 style={headerText}>Would You Rather</h1> */}
-                        {this.state.loaded ? <h3>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h3> : null}
+                        {this.state.loaded ? <h1>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h1> : null}
                     </div>
                 </div>
                 <div className="container">
