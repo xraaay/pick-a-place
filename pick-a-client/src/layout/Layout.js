@@ -4,14 +4,14 @@ import ContentRouter from './ContentRouter'
 import { withRouter } from 'react-router-dom'
 import ActiveSearch from '../components/ActiveSearch'
 import { connect } from 'react-redux'
+import DiceRoll from '../components/DiceRoll';
 
 class Layout extends React.Component{
     render(){
         return (
             <React.Fragment>
-                {this.props.}
+                {!this.props.loading ? <DiceRoll /> : null}
                 <Nav />
-                {/* {this.props.location.pathname === "/rtd" || "/wyr" ? <ActiveSearch /> : null} */}
                 <ContentRouter />
             </React.Fragment>
         )

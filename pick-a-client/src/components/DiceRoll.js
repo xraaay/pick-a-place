@@ -9,16 +9,34 @@ class DiceRoll extends React.Component {
         }
     }
     render(){
-        const styling = {
+        const backgroundStyling = {
             height: "100VH", 
             width: "100VW", 
             backgroundColor: "black",
-            zIndex: "1"
+            zIndex: "1000",
+            position: "absolute"
         }
+
+        const diceStyle = {
+            textAlign: "center",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            height: "auto",
+            width: "20%",
+            paddingTop: "100px"
+        }
+
+        const textStyle = {
+            color: "white",
+            textAlign: "center"
+        }
+
         return (
             <React.Fragment>
-                <div style={styling}>
-                    <img src={dice} alt="dice roll" />
+                <div style={backgroundStyling}>
+                    <img style={diceStyle} src={dice} alt="dice roll" />
+                    <h3 style={textStyle} >Generating...</h3>
                 </div>
             </React.Fragment>
         )

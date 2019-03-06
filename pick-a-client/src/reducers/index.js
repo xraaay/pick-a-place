@@ -6,7 +6,7 @@ import search from './search'
 const appReducer = combineReducers({
     currentUser,
     search,
-    loading
+    loading: false
 })
 
 const rootReducer = (state, action) => {
