@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import currentUser from './currentUser'
+import loading from './loading'
 import search from './search'
 
 const appReducer = combineReducers({
     currentUser,
-    search
+    search,
+    loading
 })
 
 const rootReducer = (state, action) => {
