@@ -30,10 +30,12 @@ class Nav extends React.Component {
             //     this.props.history.push("/settings")
             //     break;
             case 5:
-                this.props.history.push("/help/rtd")
+                // this.props.history.push("/help/rtd")
+                this.props.history.push("/rtd")
                 break;
             case 6:
-                this.props.history.push("/help/wyr")
+                // this.props.history.push("/help/wyr")
+                this.props.history.push('/wyr')
                 break;
             // case 7:
             //     logout()
@@ -50,6 +52,8 @@ class Nav extends React.Component {
         const navbar = route === "/" ? null : {zIndex: 0, position: "inherit"}
         const title = route === "/" ? null : {color: '#161616'}
         const buttons = route === "/" ? null : {color: 'rgba(0, 0, 0, 0.5)'}
+        const activeRTD = route === "/rtd" ? {color: "rgba(0, 0, 0, 1)", fontWeight: "700"} : {color: "rgba(0, 0, 0, 0.5)"}
+        const activeWYR = route === "/wyr" ? {color: "rgba(0, 0, 0, 1)", fontWeight: "700"} : {color: "rgba(0, 0, 0, 0.5)"}
         const loggedIn = this.props.user.user ? (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -62,10 +66,10 @@ class Nav extends React.Component {
         ) : (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 6)}} style={buttons}>Would You Rather</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 6)}} style={activeWYR}>Would You Rather</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={buttons}>Roll The Dice</a>
+                    <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 5)}} style={activeRTD}>Roll The Dice</a>
                 </li>
                 <li className="nav-item">
                     {/* <a href="#" className="nav-link js-scroll-trigger" onClick={e => {this.navigate(e, 3)}} style={buttons}>Search</a> */}

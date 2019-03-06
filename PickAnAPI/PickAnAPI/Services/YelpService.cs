@@ -19,11 +19,11 @@ namespace PickAnAPI.Services
 
         public async Task<HttpResponseMessage> GetBusinesses(YelpRequest req)
         {
-            if (req.Price.Length > 2)
-            {
+            //if (req.Price.Length > 2)
+            //{
                 req.Price = req.Price.Substring(1, req.Price.Length - 2);
-            }
-            req.Price = req.Price;
+            //}
+            //req.Price = req.Price;
             
             string yelpURI = "https://api.yelp.com/v3/businesses/search?";
             //Type props = req.GetType();
