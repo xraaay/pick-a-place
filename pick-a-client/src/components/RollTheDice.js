@@ -6,6 +6,8 @@ import YelpCard from './YelpCard';
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import swal from 'sweetalert2'
+import DiceRoll from './DiceRoll';
+import { setLoading } from '../actions/index'
 
 class RollTheDice extends React.Component {
     constructor(props){
@@ -19,6 +21,7 @@ class RollTheDice extends React.Component {
     }
 
     componentDidMount(){
+        setLoading(true)
         if(this.props.data.search){
             this.rtd()
         } else {
@@ -75,11 +78,13 @@ class RollTheDice extends React.Component {
                     results: three,
                     loaded: true
                 })
+                setLoading(false)
             })
             .catch(console.log)
     }
 
     reroll(){
+        setLoading(true)
         if(this.props.data.search){
             this.rtd()
         } else {
@@ -97,40 +102,43 @@ class RollTheDice extends React.Component {
 
         return (
             <React.Fragment>
-                <div className="row" style={{pointerEvents: "none"}}>
-                    <div className="container mb-2">
-                        {/* <h1 className="text-center" style={headerText}>Roll The Dice</h1> */}
+                {/* <DiceRoll /> */}
+                <div>
+                    <div className="row" style={{pointerEvents: "none"}}>
+                        <div className="container mb-2">
+                            {/* <h1 className="text-center" style={headerText}>Roll The Dice</h1> */}
+                        </div>
                     </div>
-                </div>
-                <div className="container">
-                    <CardColumns>
-                        {this.state.results[0] && this.state.results.map(item => {
-                            return (
-                                <CSSTransition 
-                                    key={item.id} 
-                                    in={true}
-                                    appear={true}
-                                    timeout={1000}
-                                    classNames="fade-card"
-                                >
-                                    <React.Fragment>
-                                        <YelpCard result={item} />
-                                    </React.Fragment>
-                                </CSSTransition>
-                            )
-                        })}
-                    </CardColumns>
-                    {/* <Collapse className="row" isOpen={this.state.collapse}>
-                        <ListGroup>
-                            {this.state.collapse && this.state.waitList.map(item => {
+                    <div className="container">
+                        <CardColumns>
+                            {this.state.results[0] && this.state.results.map(item => {
                                 return (
-                                    <ListGroupItem>{item}</ListGroupItem>
+                                    <CSSTransition 
+                                        key={item.id} 
+                                        in={true}
+                                        appear={true}
+                                        timeout={1000}
+                                        classNames="fade-card"
+                                    >
+                                        <React.Fragment>
+                                            <YelpCard result={item} />
+                                        </React.Fragment>
+                                    </CSSTransition>
                                 )
-                            })
-                            }
-                        </ListGroup>
-                    </Collapse> */}
-                    {this.state.loaded ? <button type="button" className="btn btn-secondary btn-block mx-auto" style={{backgroundColor: "rgb(100, 161, 157)", borderColor: "rgb(100, 161, 157)"}} onClick={e => {this.reroll()}}>Reroll</button> : null}
+                            })}
+                        </CardColumns>
+                        {/* <Collapse className="row" isOpen={this.state.collapse}>
+                            <ListGroup>
+                                {this.state.collapse && this.state.waitList.map(item => {
+                                    return (
+                                        <ListGroupItem>{item}</ListGroupItem>
+                                    )
+                                })
+                                }
+                            </ListGroup>
+                        </Collapse> */}
+                        {this.state.loaded ? <button type="button" className="btn btn-secondary btn-block mx-auto" style={{backgroundColor: "rgb(100, 161, 157)", borderColor: "rgb(100, 161, 157)"}} onClick={e => {this.reroll()}}>Reroll</button> : null}
+                    </div>
                 </div>
             </React.Fragment>
         )

@@ -13,8 +13,9 @@ class DiceRoll extends React.Component {
             height: "100VH", 
             width: "100VW", 
             backgroundColor: "black",
-            zIndex: "1000",
-            position: "absolute"
+            zIndex: "2000",
+            position: "absolute",
+            justifyContent: "center"
         }
 
         const diceStyle = {
