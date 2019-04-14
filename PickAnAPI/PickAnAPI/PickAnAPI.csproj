@@ -272,7 +272,7 @@
     <Content Include="wwwroot\photos\houndstooth-pattern.png" />
     <Content Include="wwwroot\photos\seigaiha.png" />
     <Content Include="wwwroot\photos\swirl_pattern.png" />
-    <Content Include="wwwroot\precache-manifest.476e577a8ef1127177481e089e44a992.js" />
+    <Content Include="wwwroot\precache-manifest.fc7fc480b7b29c2806a63041ada601c6.js" />
     <Content Include="wwwroot\service-worker.js" />
     <Content Include="wwwroot\startbootstrap-grayscale\css\grayscale.css" />
     <Content Include="wwwroot\startbootstrap-grayscale\css\grayscale.min.css" />
@@ -1679,11 +1679,12 @@
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.min.js" />
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.slim.js" />
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="wwwroot\static\css\1.a72b506c.chunk.css" />
-    <Content Include="wwwroot\static\css\main.e3914ac7.chunk.css" />
-    <Content Include="wwwroot\static\js\1.341f65b7.chunk.js" />
-    <Content Include="wwwroot\static\js\main.b615be00.chunk.js" />
-    <Content Include="wwwroot\static\js\runtime~main.229c360f.js" />
+    <Content Include="wwwroot\static\css\2.6cef9860.chunk.css" />
+    <Content Include="wwwroot\static\css\main.59838a8d.chunk.css" />
+    <Content Include="wwwroot\static\js\2.971b36cd.chunk.js" />
+    <Content Include="wwwroot\static\js\main.b2befe6f.chunk.js" />
+    <Content Include="wwwroot\static\js\runtime~main.fdfcfda2.js" />
+    <Content Include="wwwroot\static\media\diceroll.1ee6ba46.gif" />
     <None Include="Properties\PublishProfiles\pick-a-place - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\PickAnAPI - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -1782,11 +1783,11 @@
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.min.map" />
     <Content Include="wwwroot\startbootstrap-grayscale\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="wwwroot\static\css\1.a72b506c.chunk.css.map" />
-    <Content Include="wwwroot\static\css\main.e3914ac7.chunk.css.map" />
-    <Content Include="wwwroot\static\js\1.341f65b7.chunk.js.map" />
-    <Content Include="wwwroot\static\js\main.b615be00.chunk.js.map" />
-    <Content Include="wwwroot\static\js\runtime~main.229c360f.js.map" />
+    <Content Include="wwwroot\static\css\2.6cef9860.chunk.css.map" />
+    <Content Include="wwwroot\static\css\main.59838a8d.chunk.css.map" />
+    <Content Include="wwwroot\static\js\2.971b36cd.chunk.js.map" />
+    <Content Include="wwwroot\static\js\main.b2befe6f.chunk.js.map" />
+    <Content Include="wwwroot\static\js\runtime~main.fdfcfda2.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

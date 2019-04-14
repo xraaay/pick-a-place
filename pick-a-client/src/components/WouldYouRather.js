@@ -150,7 +150,7 @@ class WouldYouRather extends React.Component {
 
     render(){
         const headerText = {
-            // fontFamily: "Varela Round",
+            fontFamily: "Roboto",
             fontWeight: "700",
             fontSize: "2.5rem",
             lineHeight: "2.5rem"
@@ -160,9 +160,9 @@ class WouldYouRather extends React.Component {
             <React.Fragment>
                 {this.state.showAlert ? <Alert isOpen={this.state.showAlert} /> : null}
                 <div className="row">
-                    <div className="container text-center">
+                    <div className="container text-center" style={headerText}>
                         {/* <h1 style={headerText}>Would You Rather</h1> */}
-                        {this.state.loaded ? <h1>{this.state.index < 6 ? `Round ${this.state.index}!` : "Final!"}</h1> : null}
+                        {this.state.loaded ? <h1>{this.state.index < 6 ? `Round ${this.state.index}` : "Final"}</h1> : null}
                     </div>
                 </div>
                 <div className="container">

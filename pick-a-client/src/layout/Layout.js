@@ -17,7 +17,7 @@ class Layout extends React.Component{
     render(){
         return (
             <React.Fragment>
-                {this.props.loading ? 
+                {/* {this.props.loading ? 
                     <CSSTransition
                         // in={true}
                         // appear={true}
@@ -26,7 +26,7 @@ class Layout extends React.Component{
                     >
                         <DiceRoll /> 
                     </CSSTransition>
-                : null}
+                : null} */}
                 <React.Fragment>
                     <Nav />
                     <ContentRouter />
